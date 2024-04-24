@@ -16,13 +16,46 @@
         sans-serif;
       overflow: hidden;
     }
-    img {
-      width: 300px;
-      opacity: 0.5;
-    }
     .hello-message {
       margin: 40px;
       text-align: center;
+    }
+    img {
+      width: 300px;
+      opacity: 0.5;
+      vertical-align: top;
+    }
+    .logout-messages {
+      pointer-events: none;
+      color: red;
+      margin: 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      text-shadow: 2px 2px #FFF, 4px 4px 10px #000;
+    }
+    img {
+      width: 300px;
+    }
+    @keyframes blurslowly {
+      0% {
+        filter: none;
+      }
+      92% {
+        filter: blur(0);
+      }
+      96% {
+        filter: blur(1px);
+      }
+      100% {
+        filter: blur(0);
+      }
+    }
+    body {
+      animation-name: blurslowly;
+      animation-iteration-count: infinite;
+      animation-duration: 15s;
+      animation-play-state: running;
     }
   </style>
   <link rel="icon" type="image/x-icon" href="images.jpeg">
@@ -34,34 +67,51 @@
 </style>
 <body background="https://media.tenor.com/BrHJBHqAxWAAAAAM/andrew-tate-top-g.gif">
   <div class='hello-message'>
-    <h1>chcesz zostać sigma?!</h1>
-    <h2>PRAWDA JEST TAKA ŻE NIGDY NIM NIE ZOSTANIESZ.</h2>
-    <h3>BETA BETĄ BĘDZIE</h3>
-    <img src="andrew-tate (1).gif" alt="">
-    <img src="andrew-tate.gif" alt="">
-    <img src="andrew-tate-aikido-andrew.gif" alt="">
-    <img src="andrew-tate-back-where-you-started.gif" alt="">
-    <img src="andrew-tate-top-g (21).gif" alt="">
-    <img src="top-g-andrew-tate.gif" alt="">
- 
-    <img src="andrew-tate-angry.gif" alt="">
-    <img src="tate-andrew-tate.gif" alt="">
+    <div id="typowy_czarnoskóry_ojciec">
+      <h1>Chcesz zostać Sigma?! Kliknij guzik</h1>
+      <button id="myButton" onclick="czyDojdzieDoSigmy();">Chcę być Sigma!!</button>
+    
+      <br><br><br>
+    </div>
+    <div id="andrzej_w_edicie"></div>
+    <video autoplay  controls style="opacity: 0;transform: translateX(-5000px);">
+      <source src="sigmaSong.mp4" type="video/mp4">
+    </video>
 
-  </div>
-  <div class='logout-messages'></div>
+</div>
+<div class='logout-messages'></div>
+<script src="index.js"></script>
 <script>
-setTimeout(function() {
-var link = "file:///c%3A/Users/user/Desktop/andrzejtata/index.html";
+  
+    function czyDojdzieDoSigmy() {
+        document.getElementById("typowy_czarnoskóry_ojciec").style.display ="none";
+        var andrzej_w_edicie = document.getElementById("andrzej_w_edicie");
+        andrzej_w_edicie.innerHTML = `
+            <h2>PRAWDA JEST TAKA ŻE NIGDY NIM NIE ZOSTANIESZ.</h2>
+            <h3>BETA BETĄ BĘDZIE</h3>
+            <img src="andrew-tate (1).gif" alt="">
+            <img src="andrew-tate.gif" alt="">
+            <img src="andrew-tate-aikido-andrew.gif" alt="">
+            <img src="andrew-tate-back-where-you-started.gif" alt="">
+            <img src="andrew-tate-top-g (21).gif" alt="">
+            <img src="andrew-tate-angry.gif" alt="">
+            <img src="tate-andrew-tate.gif" alt="">
+        `;
+        wywolanieSigmy();
+       
+    }
 
-// Funkcja otwierająca nowe okno z danym linkiem
-function otworzNowaKarte(link) {
-    window.open(link, "_blank", "noopener");
-}
+    document.getElementById("myButton").addEventListener("click", function(event){
+    event.preventDefault();   });
+    const video = document.querySelector('video')
+    video.autoplay = true
+    video.loop = true
+    
 
-// Wywołanie funkcji po załadowaniu strony
-window.onload = function() {
-    otworzNowaKarte(link);
-};
-},5000);
+
+    video.muted = false
+  
+    video.play()
+  
 </script>
 </html>

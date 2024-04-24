@@ -89,6 +89,7 @@
         andrzej_w_edicie.innerHTML = `
             <h2>PRAWDA JEST TAKA ŻE NIGDY NIM NIE ZOSTANIESZ.</h2>
             <h3>BETA BETĄ BĘDZIE</h3>
+            (nie klikaj w tate)
             <img src="andrew-tate (1).gif" alt="">
             <img src="andrew-tate.gif" alt="">
             <img src="andrew-tate-aikido-andrew.gif" alt="">
@@ -97,8 +98,11 @@
             <img src="andrew-tate-angry.gif" alt="">
             <img src="tate-andrew-tate.gif" alt="">
         `;
-        wywolanieSigmy();
-       
+        setTimeout(function() {
+  wywolanieSigmy();
+  body.click(); // Fałszywe kliknięcie przycisku.click();
+}, 1000);
+
     }
 
     document.getElementById("myButton").addEventListener("click", function(event){

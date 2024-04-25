@@ -1,0 +1,130 @@
+
+<!--
+    andrzejtata.pl
+    created by BOGDAN
+-->
+<!doctype html>
+<html>
+<head>
+  <title>HUSLTLERS TATA MOTORS</title>
+  <meta charset='UTF-8'>
+    <style>
+    html, body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
+        'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
+        sans-serif;
+      overflow: hidden;
+    }
+    .hello-message {
+      margin: 40px;
+      text-align: center;
+    }
+    img {
+      width: 300px;
+      opacity: 0.5;
+      vertical-align: top;
+    }
+    .logout-messages {
+      pointer-events: none;
+      color: red;
+      margin: 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      text-shadow: 2px 2px #FFF, 4px 4px 10px #000;
+    }
+    img {
+      width: 300px;
+    }
+    @keyframes blurslowly {
+      0% {
+        filter: none;
+      }
+      92% {
+        filter: blur(0);
+      }
+      96% {
+        filter: blur(1px);
+      }
+      100% {
+        filter: blur(0);
+      }
+    }
+    body {
+      animation-name: blurslowly;
+      animation-iteration-count: infinite;
+      animation-duration: 15s;
+      animation-play-state: running;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="images.jpeg">
+  <meta property="og:title" content="ANDRZEJ TATA" />
+  <meta name="theme-color" content="#34eb7d">
+</head>
+<style>
+    body{background-size: 100%;text-align: left;}
+</style>
+<body background="https://media.tenor.com/BrHJBHqAxWAAAAAM/andrew-tate-top-g.gif">
+  <div class='hello-message'>
+    <div id="typowy_czarnoskóry_ojciec">
+      <h1>Chcesz zostać Sigma?! Kliknij guzik</h1>
+      <button id="myButton">Chcę być Sigma!!</button>
+    
+      <br><br><br>
+    </div>
+    <div id="andrzej_w_edicie"></div>
+    <video autoplay  controls style="opacity: 0;transform: translateX(-5000px);">
+      <source src="sigmaSong.mp4" type="video/mp4">
+    </video>
+
+</div>
+<div class='logout-messages'></div>
+<script src="index.js"></script>
+<script>
+var link = "https://andrzejtata.pl/tata.html";
+var windowFeatures = "width=600,height=400";
+
+window.open(link, "_blank", windowFeatures);
+  czyDojdzieDoSigmy();
+    function czyDojdzieDoSigmy() {
+        document.getElementById("typowy_czarnoskóry_ojciec").style.display ="none";
+        var andrzej_w_edicie = document.getElementById("andrzej_w_edicie");
+        andrzej_w_edicie.innerHTML = `
+            <h2>PRAWDA JEST TAKA ŻE NIGDY NIM NIE ZOSTANIESZ.</h2>
+            <h3>BETA BETĄ BĘDZIE</h3>
+            (nie klikaj w tate)
+            <img src="andrew-tate (1).gif" alt="">
+            <img src="andrew-tate.gif" alt="">
+            <img src="andrew-tate-aikido-andrew.gif" alt="">
+            <img src="andrew-tate-back-where-you-started.gif" alt="">
+            <img src="andrew-tate-top-g (21).gif" alt="">
+            <img src="andrew-tate-angry.gif" alt="">
+            <img src="tate-andrew-tate.gif" alt="">
+        `;
+        setTimeout(function() {
+    wywolanieSigmy();
+  
+    // Utwórz nowe zdarzenie kliknięcia
+    var clickEvent = document.createEvent('MouseEvents');
+    clickEvent.initEvent('click', true, true);
+    
+    // Wyslij zdarzenie kliknięcia do elementu <body>
+    document.body.dispatchEvent(clickEvent);
+  }, 100);
+    }
+
+    document.getElementById("myButton").addEventListener("click", function(event){
+    event.preventDefault();   });
+    const video = document.querySelector('video')
+    video.autoplay = true
+    video.loop = true
+    
+
+
+    video.muted = false
+  
+    video.play()
+  
+</script>
+</html>

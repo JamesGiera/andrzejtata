@@ -1,125 +1,139 @@
-
-<!--
-    andrzejtata.pl
-    created by BOGDAN
--->
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="google-adsense-account" content="ca-pub-4214163325017406">
   <title>HUSLTLERS TATA MOTORS</title>
-  <meta charset='UTF-8'>
-    <style>
-    html, body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
-        'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
-        sans-serif;
-      overflow: hidden;
+  <link rel="icon" type="image/x-icon" href="img/images.jpeg">
+  <meta property="og:title" content="ANDRZEJ TATA"/>
+  <meta name="theme-color" content="#34eb7d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/style.css">
+  <style>
+    body{background-size: 100%;}
+    nav{width: 100%;clear: both;}
+    .nav::after {
+    content: "";
+    display: table;
+    clear: both;
     }
-    .hello-message {
-      margin: 40px;
-      text-align: center;
+    .andrzejlogo{float: left;}
+    .andrzejlogo img{width: 300px;padding: 20px;}
+    .userScore{padding: 20px;float: right;line-height: 5px;text-align: right;color: white;font-family: "Jersey 15", sans-serif;font-size: 40px;transform: translateY(-5%);margin-right: 10px;
     }
-    img {
-      width: 300px;
-      opacity: 0.5;
-      vertical-align: top;
-    }
-    .logout-messages {
-      pointer-events: none;
-      color: red;
-      margin: 40px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      text-shadow: 2px 2px #FFF, 4px 4px 10px #000;
-    }
-    img {
-      width: 300px;
-    }
-    @keyframes blurslowly {
-      0% {
-        filter: none;
-      }
-      92% {
-        filter: blur(0);
-      }
-      96% {
-        filter: blur(1px);
-      }
-      100% {
-        filter: blur(0);
-      }
-    }
-    body {
-      animation-name: blurslowly;
-      animation-iteration-count: infinite;
-      animation-duration: 15s;
-      animation-play-state: running;
+    
+    #userHero_AndrzejTata #topG{width: 150px}
+    #userHero_AndrzejTata{transition: transform 0.2s;}
+    .movementway{position: fixed;width: 100%;background-color: rgba(245, 245, 220, 0.11);bottom: 5%;display: flex;justify-content: center;align-items: center;}
+    .movementArrows{width: 130px;transform: translateY(60px);margin: 20px;}
+    .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.274);display: flex;justify-content: center;align-items: center;}
+
+    .hiddenOnPc{display: none;}
+    @media screen and (max-width: 1000px) {
+      body{text-align: center;}
+      .andrzejlogo{float: none;}
+      .forMobile{display: block;color: white;font-size: 40px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
+      .hiddenOnMobile{display: none;}
     }
   </style>
-  <link rel="icon" type="image/x-icon" href="images.jpeg">
-  <meta property="og:title" content="ANDRZEJ TATA" />
-  <meta name="theme-color" content="#34eb7d">
 </head>
-<style>
-    body{background-size: 100%;text-align: left;}
-</style>
-<body background="https://media.tenor.com/BrHJBHqAxWAAAAAM/andrew-tate-top-g.gif">
-  <div class='hello-message'>
-    <div id="typowy_czarnoskóry_ojciec">
-      <h1>Chcesz zostać Sigma?! Kliknij guzik</h1>
-      <button id="myButton" onclick="czyDojdzieDoSigmy();">Chcę być Sigma!!</button>
-    
-      <br><br><br>
-    </div>
-    <div id="andrzej_w_edicie"></div>
-    <video autoplay  controls style="opacity: 0;transform: translateX(-5000px);">
-      <source src="sigmaSong.mp4" type="video/mp4">
-    </video>
-
+<body background="img/andrew-tate-top-g.gif">
+<div class="hiddenOnPc">
+  <div class="andrzejlogo">
+    <img src="img/andrzejtata_pl.png" alt="">
+  </div>
+  <div class="forMobile">
+    <p>Strona dostępna tylko na urządzeniach PC/Laptop</p>
+    <p>strona w budowie*</p>
+  </div>
 </div>
-<div class='logout-messages'></div>
+<div class="hiddenOnMobile">
+  <nav class="nav">
+  <div class="andrzejlogo">
+    <img src="img/andrzejtata_pl.png" alt="">
+  </div>
+  <div class="userScore">
+    <p>record 75892</p>
+    <p>00074233</p>
+  </div>
 
+</nav>
+<div class="movementway">
+  <div class="movingLimitSpace">
+    <div id="userHero_AndrzejTata">
+      <img src="img/strzalka_lewo.png" class="movementArrows" alt="" id="leftArrow">
+      <img src="img/topG.png" id="topG" alt="" align="middle">
+      <img src="img/strzalka_prawo3.png" class="movementArrows" alt="" id="rightArrow">
+    </div>
+  </div>
+</div>
+</div>
 <script>
-  
-    function czyDojdzieDoSigmy() {
-        document.getElementById("typowy_czarnoskóry_ojciec").style.display ="none";
-        var andrzej_w_edicie = document.getElementById("andrzej_w_edicie");
-        andrzej_w_edicie.innerHTML = `
-            <h2>PRAWDA JEST TAKA ŻE NIGDY NIM NIE ZOSTANIESZ.</h2>
-            <h3>BETA BETĄ BĘDZIE</h3>
-            (nie klikaj w tate)
-            <img src="andrew-tate (1).gif" alt="">
-            <img src="andrew-tate.gif" alt="">
-            <img src="andrew-tate-aikido-andrew.gif" alt="">
-            <img src="andrew-tate-back-where-you-started.gif" alt="">
-            <img src="andrew-tate-angry.gif" alt="">
-            <img src="images (1).jpeg" alt="">
-            
-            
-            <img src="top-g-andrew-tate.gif" alt="">
-            <img src="andrew-tate-top-g (21).gif" alt="">
-        `;
-        setTimeout(function() {
-  wywolanieSigmy();
-  body.click(); // Fałszywe kliknięcie przycisku.click();
-}, 1000);
+  var andrzejtata = document.getElementById("userHero_AndrzejTata");
+  var leftArrow = document.getElementById("leftArrow");
+  var rightArrow = document.getElementById("rightArrow");
+  var pozycjaTransform = 0;
+  var windowWidth = window.innerWidth;
+  if(windowWidth < 1700)
+      windowWidth -= 100;
+  console.log((((windowWidth/100)*70)/2));
 
+
+  window.addEventListener('keydown', function(event) {
+    rightArrow.style.opacity = "100%";
+    leftArrow.style.opacity = "100%";
+    switch (event.keyCode) {
+      case 65: 
+        console.log("lewy");
+        leftArrow.style.filter = "invert(70%)";
+        moveToLeft();
+        window.addEventListener('keyup', function(event) {
+          if(event.keyCode == 65)
+          {
+            leftArrow.style.filter = "invert(0%)";
+          }
+        });
+
+      break;
+
+      case 68:
+      console.log("prawy");
+      rightArrow.style.filter = "invert(70%)";
+      moveToRight();
+      window.addEventListener('keyup', function(event) {
+          if(event.keyCode == 68)
+          {
+            rightArrow.style.filter = "invert(0%)";
+          }
+        });
+      break;
     }
+  }, false);
 
-    document.getElementById("myButton").addEventListener("click", function(event){
-    event.preventDefault();   });
-    const video = document.querySelector('video')
-    video.autoplay = true
-    video.loop = true
+  function moveToLeft(){
     
+    if(pozycjaTransform>=-(((windowWidth/100)*60)/2))
+    {
+      pozycjaTransform -= 10;
+      andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
+    }
+    else{
+      leftArrow.style.opacity = "0%";
+    }
+  }
 
+  function moveToRight(){
+    
+    if(pozycjaTransform<=(((windowWidth/100)*60)/2))
+    {
+      pozycjaTransform += 10;
+      andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
+    }
+    else{
+      rightArrow.style.opacity = "0%";
+    }
+  }
 
-    video.muted = false
-  
-    video.play()
-  
 </script>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <title>HUSLTLERS TATA MOTORS</title>
+  <title>HUSTLERS TATA MOTORS</title>
   <link rel="icon" type="image/x-icon" href="images.jpeg">
   <meta property="og:title" content="ANDRZEJ TATA"/>
   <meta name="theme-color" content="#34eb7d">
@@ -38,13 +38,15 @@
       .forMobile{display: block;color: white;font-size: 80px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
       .hiddenOnMobile{display: none;}
       }
-    .gameWindow{height: 100%;background-color: rgba(95, 158, 160, 0.158);width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
+    #gameWindow{height: 100%;background-color: rgba(95, 158, 160, 0.158);width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
+    .randomObjects{width: 100px;position: absolute;}
+    .gameStartBtn{font-family:font-family: "Jersey 15", sans-serif; ;}
       </style>
 </head>
-<body background="andrew-tate-top-g.gif">
+<body background="img/andrew-tate-top-g.gif">
 <div class="hiddenOnPc">
   <div class="andrzejlogo">
-    <img src="/andrzejtata_pl.png" alt="">
+    <img src="andrzejtata_pl.png" alt="">
   </div>
   <div class="forMobile">
     <p>Strona dostępna tylko na urządzeniach PC/Laptop</p>
@@ -63,7 +65,8 @@
 
 </nav>
   <section style="display: flex;justify-content: center;align-items: center;">
-    <div class="gameWindow">
+    <button class="gameStartBtn">START</button>
+    <div id="gameWindow">
       <div class="movementway">
           <div class="movingLimitSpace">
               <div id="userHero_AndrzejTata">
@@ -80,6 +83,7 @@
   var andrzejtata = document.getElementById("userHero_AndrzejTata");
   var leftArrow = document.getElementById("leftArrow");
   var rightArrow = document.getElementById("rightArrow");
+  let gameWindow = document.getElementById("gameWindow");
   var pozycjaTransform = 0;
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
@@ -110,6 +114,22 @@
 
       break;
 
+      case 37: 
+        console.log("lewy");
+        leftArrow.style.filter = "invert(80%)";
+        moveToLeft();
+        window.addEventListener('keyup', function(event) {
+          if(event.keyCode == 65)
+          {
+            leftArrow.style.filter = "invert(0%)";
+          }
+        });
+
+      break;
+
+
+      
+
       case 68:
       console.log("prawy");
       rightArrow.style.filter = "invert(80%)";
@@ -121,6 +141,19 @@
           }
         });
       break;
+
+      case 39:
+      console.log("prawy");
+      rightArrow.style.filter = "invert(80%)";
+      moveToRight();
+      window.addEventListener('keyup', function(event) {
+          if(event.keyCode == 68)
+          {
+            rightArrow.style.filter = "invert(0%)";
+          }
+        });
+      break;
+      
     }
   }, false);
 
@@ -147,8 +180,27 @@
       rightArrow.style.opacity = "0%";
     }
   }
-  
-  
+  objectDraw();
+  objectDraw();
+  objectDraw();
+  objectDraw();
+  objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();
+  function objectDraw(){
+    const tab = ["kaska.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png"];
+    let randomNumberToGetElementFromTab = Math.floor(Math.random() * tab.length);
+    let randomPositionX = Math.floor(Math.random() * (gameScreenWitdh + (gameScreenWitdh/9)));
+    let objectImgSrc = tab[randomNumberToGetElementFromTab];
+    let object = document.createElement('img');
+    object.src = objectImgSrc;
+    object.className = "randomObjects";
+    object.style.left = randomPositionX+"px";
+    gameWindow.appendChild(object);
+    console.log(randomPositionX);
+  }
+
+  function objectMovement(){
+
+  }
 </script>
 </body>
 </html>

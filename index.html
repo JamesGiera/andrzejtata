@@ -234,7 +234,7 @@ window.addEventListener('keyup', function(event) {
     let randomPositionX = Math.floor(Math.random() * (gameScreenWitdh + (gameScreenWitdh/9)));
     let objectImgSrc = tab[randomNumberToGetElementFromTab];
     let object = document.createElement('img');
-    object.src = "img/"+objectImgSrc;
+    object.src = objectImgSrc;
     object.className = "randomObjects";
     object.style.left = randomPositionX+"px";
     gameWindow.appendChild(object);

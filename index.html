@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <title>HUSLTLERS TATA MOTORS</title>
   <link rel="icon" type="image/x-icon" href="images.jpeg">
@@ -22,27 +22,29 @@
     .userScore{padding: 20px;float: right;line-height: 5px;text-align: right;color: white;font-family: "Jersey 15", sans-serif;font-size: 40px;transform: translateY(-5%);margin-right: 10px;
     }
     
-    #userHero_AndrzejTata #topG{width: 110px}
-    #userHero_AndrzejTata{transition: transform 0.2s;}
-    .movementway{position: fixed;width: 100%;background-color: rgba(245, 245, 220, 0.11);bottom: 5%;display: flex;justify-content: center;align-items: center;}
+    #userHero_AndrzejTata #topG{width: 110px;}
+    #userHero_AndrzejTata #topG:hover{filter: invert(10%)}
+    #userHero_AndrzejTata{transition: transform 0.2s;margin-bottom: 5px;}
+    .movementway{position: fixed;width: 100%;background-color: rgba(245, 245, 220, 0);bottom: 5%;}
     .movementArrows{width: 110px;transform: translateY(60px);margin: 20px;}
-    .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.274);display: flex;justify-content: center;align-items: center;}
+    .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.027);display: flex;justify-content: center;align-items: center;border-bottom: 2px solid rgb(0, 0, 0);;}
 
     .hiddenOnPc{display: none;}
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 900px) {
       body{text-align: center;}
       .andrzejlogo{float: none;}
       .andrzejlogo img{width: 70%;}
       .hiddenOnPc{display: block;}
       .forMobile{display: block;color: white;font-size: 80px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
       .hiddenOnMobile{display: none;}
-    }
-  </style>
+      }
+    .gameWindow{height: 100%;background-color: rgba(95, 158, 160, 0.158);width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
+      </style>
 </head>
 <body background="andrew-tate-top-g.gif">
 <div class="hiddenOnPc">
   <div class="andrzejlogo">
-    <img src="andrzejtata_pl.png" alt="">
+    <img src="/andrzejtata_pl.png" alt="">
   </div>
   <div class="forMobile">
     <p>Strona dostępna tylko na urządzeniach PC/Laptop</p>
@@ -60,15 +62,19 @@
   </div>
 
 </nav>
-<div class="movementway">
-  <div class="movingLimitSpace">
-    <div id="userHero_AndrzejTata">
-      <img src="strzalka_lewo.png" class="movementArrows" alt="" id="leftArrow">
-      <img src="topG.png" id="topG" alt="" align="middle">
-      <img src="strzalka_prawo3.png" class="movementArrows" alt="" id="rightArrow">
+  <section style="display: flex;justify-content: center;align-items: center;">
+    <div class="gameWindow">
+      <div class="movementway">
+          <div class="movingLimitSpace">
+              <div id="userHero_AndrzejTata">
+                <img src="strzalka_lewo.png" class="movementArrows" alt="" id="leftArrow">
+                <img src="topG.png" id="topG" alt="" align="middle">
+                <img src="strzalka_prawo3.png" class="movementArrows" alt="" id="rightArrow">
+              </div>
+          </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 </div>
 <script>
   var andrzejtata = document.getElementById("userHero_AndrzejTata");
@@ -76,9 +82,15 @@
   var rightArrow = document.getElementById("rightArrow");
   var pozycjaTransform = 0;
   var windowWidth = window.innerWidth;
+  var windowHeight = window.innerHeight;
+  window.addEventListener("resize",function() {
+      windowWidth = window.innerWidth
+      windowHeight = window.innerHeight;});
   if(windowWidth < 1700)
       windowWidth -= 100;
-  console.log((((windowWidth/100)*70)/2));
+  var gameScreenWitdh = ((windowWidth/100)*60);
+  var gameScreenHeight = ((windowWidth/100)*95);
+  console.log(gameScreenHeight);
 
 
   window.addEventListener('keydown', function(event) {
@@ -87,7 +99,7 @@
     switch (event.keyCode) {
       case 65: 
         console.log("lewy");
-        leftArrow.style.filter = "invert(70%)";
+        leftArrow.style.filter = "invert(80%)";
         moveToLeft();
         window.addEventListener('keyup', function(event) {
           if(event.keyCode == 65)
@@ -100,7 +112,7 @@
 
       case 68:
       console.log("prawy");
-      rightArrow.style.filter = "invert(70%)";
+      rightArrow.style.filter = "invert(80%)";
       moveToRight();
       window.addEventListener('keyup', function(event) {
           if(event.keyCode == 68)
@@ -114,7 +126,7 @@
 
   function moveToLeft(){
     
-    if(pozycjaTransform>=-(((windowWidth/100)*60)/2))
+    if(pozycjaTransform>=-(gameScreenWitdh/2))
     {
       pozycjaTransform -= 10;
       andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
@@ -126,7 +138,7 @@
 
   function moveToRight(){
     
-    if(pozycjaTransform<=(((windowWidth/100)*60)/2))
+    if(pozycjaTransform<=(gameScreenWitdh/2))
     {
       pozycjaTransform += 10;
       andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
@@ -135,7 +147,8 @@
       rightArrow.style.opacity = "0%";
     }
   }
-
+  
+  
 </script>
 </body>
 </html>

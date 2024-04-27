@@ -10,7 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    body{background-size: 100%;}
+       #cursor{width: 100px;z-index: 0;}
+   
+    body{background-size: 100%;overflow-y: hidden;}
     nav{width: 100%;clear: both;}
     .nav::after {
     content: "";
@@ -28,22 +30,38 @@
     .movementway{position: fixed;width: 100%;background-color: rgba(245, 245, 220, 0);bottom: 5%;}
     .movementArrows{width: 110px;transform: translateY(60px);margin: 20px;}
     .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.027);display: flex;justify-content: center;align-items: center;border-bottom: 2px solid rgb(0, 0, 0);;}
-
+    #hiddenOnMobile{display: none;}
     .hiddenOnPc{display: none;}
+    
+    #gameWindow{height: 100%;width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
+    .randomObjects{width: 100px;position: absolute;}
+    #startContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
+    #startContainer img{width: 700px;}
+    #gameStartBtn{font-family: "Jersey 15", sans-serif;font-size: 70px; z-index: 2;width: 300px;transform: translateX(-25px);margin-top: 50px;}
+    #gameStartBtn:hover {background-color: #3e8e41;box-shadow: 0 5px #666;cursor: pointer;}
+    #startContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
+    #startCount{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
+    #startCount p{font-size: 150px;font-family: "Jersey 15", sans-serif;color: white;}
     @media screen and (max-width: 900px) {
       body{text-align: center;}
       .andrzejlogo{float: none;}
       .andrzejlogo img{width: 70%;}
       .hiddenOnPc{display: block;}
       .forMobile{display: block;color: white;font-size: 80px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
-      .hiddenOnMobile{display: none;}
+      #hiddenOnMobile{display: none;}
       }
-    #gameWindow{height: 100%;background-color: rgba(95, 158, 160, 0.158);width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
-    .randomObjects{width: 100px;position: absolute;}
-    .gameStartBtn{font-family:font-family: "Jersey 15", sans-serif; ;}
+}
       </style>
 </head>
 <body background="andrew-tate-top-g.gif">
+  <div id="startCount">
+    <p id="countNumberConteiner"></p>
+  </div>
+  <div id="startContainer">
+    <img src="andrzejtata_pl.png" alt="">
+    <button id="gameStartBtn" onclick="gameStart();">START</button>
+    <p>created by BOGDAN</p>
+  </div>
 <div class="hiddenOnPc">
   <div class="andrzejlogo">
     <img src="andrzejtata_pl.png" alt="">
@@ -53,7 +71,7 @@
     <p>strona w budowie*</p>
   </div>
 </div>
-<div class="hiddenOnMobile">
+<div id="hiddenOnMobile">
   <nav class="nav">
   <div class="andrzejlogo">
     <img src="andrzejtata_pl.png" alt="">
@@ -64,8 +82,9 @@
   </div>
 
 </nav>
+
   <section style="display: flex;justify-content: center;align-items: center;">
-    <button class="gameStartBtn">START</button>
+    
     <div id="gameWindow">
       <div class="movementway">
           <div class="movingLimitSpace">
@@ -80,6 +99,31 @@
   </section>
 </div>
 <script>
+  function gameStart(){
+    var countNumberConteiner = document.getElementById("countNumberConteiner");
+    setTimeout(function(){
+      countNumberConteiner.innerHTML = "3";
+      setTimeout(function(){
+        countNumberConteiner.innerHTML = "2";
+        setTimeout(function(){
+          countNumberConteiner.innerHTML = "1";
+          setTimeout(function(){
+            countNumberConteiner.innerHTML = "SIGMA";
+            setTimeout(function(){
+              countNumberConteiner.style.display="none";
+            },600);
+          },600);
+        },600);
+      },600);
+    },600);
+    document.getElementById("hiddenOnMobile").style.display = "block";
+    document.getElementById("startContainer").style.display = "none";
+   
+    setInterval(() => {
+      objectDraw();
+    }, 3000)
+  }
+
   var andrzejtata = document.getElementById("userHero_AndrzejTata");
   var leftArrow = document.getElementById("leftArrow");
   var rightArrow = document.getElementById("rightArrow");
@@ -97,110 +141,137 @@
   console.log(gameScreenHeight);
 
 
+
+
   window.addEventListener('keydown', function(event) {
     rightArrow.style.opacity = "100%";
     leftArrow.style.opacity = "100%";
     switch (event.keyCode) {
-      case 65: 
+      case 65:
+      case 37:  
         console.log("lewy");
         leftArrow.style.filter = "invert(80%)";
         moveToLeft();
         window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 65)
+          if(event.keyCode == 65 || event.keyCode == 37)
           {
             leftArrow.style.filter = "invert(0%)";
           }
         });
 
       break;
-
-      case 37: 
-        console.log("lewy");
-        leftArrow.style.filter = "invert(80%)";
-        moveToLeft();
-        window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 65)
-          {
-            leftArrow.style.filter = "invert(0%)";
-          }
-        });
-
-      break;
-
-
-      
 
       case 68:
-      console.log("prawy");
-      rightArrow.style.filter = "invert(80%)";
-      moveToRight();
-      window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 68)
-          {
-            rightArrow.style.filter = "invert(0%)";
-          }
-        });
-      break;
-
       case 39:
       console.log("prawy");
       rightArrow.style.filter = "invert(80%)";
       moveToRight();
       window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 68)
+          if(event.keyCode == 68 || event.keyCode == 39)
           {
             rightArrow.style.filter = "invert(0%)";
           }
         });
       break;
+
       
     }
   }, false);
 
-  function moveToLeft(){
-    
-    if(pozycjaTransform>=-(gameScreenWitdh/2))
-    {
-      pozycjaTransform -= 10;
-      andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
-    }
-    else{
-      leftArrow.style.opacity = "0%";
-    }
-  }
+  let isMovingLeft = false;
+let isMovingRight = false;
 
-  function moveToRight(){
-    
-    if(pozycjaTransform<=(gameScreenWitdh/2))
-    {
-      pozycjaTransform += 10;
-      andrzejtata.style.transform = "translateX("+pozycjaTransform+"px)";
+function moveToLeft() {
+    if (!isMovingRight) {
+        isMovingLeft = true;
+        if (pozycjaTransform >= -(gameScreenWitdh / 2)) {
+            pozycjaTransform -= 20;
+            andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
+        } else {
+            leftArrow.style.opacity = "0%";
+        }
     }
-    else{
-      rightArrow.style.opacity = "0%";
+}
+
+function moveToRight() {
+    if (!isMovingLeft) {
+        isMovingRight = true;
+        if (pozycjaTransform <= (gameScreenWitdh / 2)) {
+            pozycjaTransform += 20;
+            andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
+        } else {
+            rightArrow.style.opacity = "0%";
+        }
     }
-  }
-  objectDraw();
-  objectDraw();
-  objectDraw();
-  objectDraw();
-  objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();objectDraw();
+}
+
+window.addEventListener('keyup', function(event) {
+    rightArrow.style.opacity = "100%";
+    leftArrow.style.opacity = "100%";
+    switch (event.keyCode) {
+      case 65:
+      case 37:  
+      isMovingLeft = false;
+
+      break;
+
+      case 68:
+      case 39:
+      isMovingRight = false;
+      break;
+
+      
+    }
+  }, false);
+  
+ 
+
+
+
   function objectDraw(){
     const tab = ["kaska.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png"];
     let randomNumberToGetElementFromTab = Math.floor(Math.random() * tab.length);
     let randomPositionX = Math.floor(Math.random() * (gameScreenWitdh + (gameScreenWitdh/9)));
     let objectImgSrc = tab[randomNumberToGetElementFromTab];
     let object = document.createElement('img');
-    object.src = objectImgSrc;
+    object.src = "img/"+objectImgSrc;
     object.className = "randomObjects";
     object.style.left = randomPositionX+"px";
     gameWindow.appendChild(object);
     console.log(randomPositionX);
+
+    let startY = -windowHeight/8; // Startowa pozycja Y poza ekranem
+
+    function animate() {
+        startY += 1; // Prędkość spadania, możesz dostosować według potrzeb
+
+        // Ustawienie nowej pozycji obiektu
+        object.style.top = startY + "px";
+
+        // Sprawdzenie, czy obiekt wciąż znajduje się w widoku okna przeglądarki
+        if (startY < windowHeight) {
+            requestAnimationFrame(animate); // Kontynuacja animacji
+        } else {
+            object.parentNode.removeChild(object); // Usunięcie obiektu po opuszczeniu widoku
+        }
+    }
+
+    animate(); // Rozpoczęcie animacji
   }
 
   function objectMovement(){
 
   }
+
+//   let cursor = document.getElementById("cursor");
+//   const userPosition = (e)=> {
+//   const mouseY = e.clientY - 190;
+//   const mouseX = e.clientX - 50;
+//   cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+ 
+// }
+
+//   window.addEventListener('mousemove', userPosition);
 </script>
 </body>
 </html>

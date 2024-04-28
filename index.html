@@ -13,6 +13,7 @@
        #cursor{width: 100px;z-index: 0;}
    
     body{background-size: 100%;overflow-y: hidden;-webkit-appearance: none;}
+    html{cursor: cell;}
     nav{width: 100%;clear: both;}
     .nav::after {
     content: "";
@@ -35,11 +36,11 @@
     
     #gameWindow{height: 100%;width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
     .randomObjects{width: 100px;position: absolute;}
-    #startContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
-    #startContainer img{width: 700px;}
+    #startContainer, #endGameContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
+    #startContainer img, #endGameContainer img{width: 700px;}
     #gameStartBtn{font-family: "Jersey 15", sans-serif;font-size: 70px; z-index: 2;width: 300px;transform: translateX(-25px);margin-top: 50px;-webkit-appearance: none;}
     #gameStartBtn:hover {background-color: #3e8e41;box-shadow: 0 5px #666;cursor: pointer;}
-    #startContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
+    #startContainer p, #endGameContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
     #startCount{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
     #startCount p{font-size: 150px;font-family: "Jersey 15", sans-serif;color: white;}
     @media screen and (max-width: 900px) {
@@ -59,14 +60,20 @@
         transform: translateY(90vh);
     }
 }
+#endGameContainer{display: none;}
       </style>
 </head>
 <body background="andrew-tate-top-g.gif">
+  <div id="endGameContainer">
+    <p id="scoreContainer" style="font-size: 50px;text-align: center;margin-bottom: 50px;"></p>
+    <a href="https://andrzejtata.pl/"><button id="gameStartBtn" onclick="reset();">RESET</button></a>
+    <p>created by BOGDAN</p>
+  </div>
   <div id="startCount">
     <p id="countNumberConteiner"></p>
   </div>
-  <div id="startContainer">
-    <img src="andrzejtata_pl.png" alt="">
+  <div id="startContainer" class="hiddenOnMobile">
+    <img src="/andrzejtata_pl.png" alt="">
     <button id="gameStartBtn" onclick="gameStart();">START</button>
     <p>created by BOGDAN</p>
   </div>
@@ -107,6 +114,11 @@
   </section>
 </div>
 <script>
+
+  let boolean2 = true;
+  
+  let i = 3000;
+  var audio = new Audio('Tourner-Dans-Le-Vide-PHONK-REMIX-_Andrew-Tate-Theme-Song_.mp3');
   function gameStart(){
     var countNumberConteiner = document.getElementById("countNumberConteiner");
     setTimeout(function(){
@@ -130,10 +142,19 @@
     getscore();
     setInterval(() => {
       objectDraw();
+      console.log(i+"i")
+      i-=100;
+      if(i<2000)
+        objectDraw();
+      if(i<0)
+        objectDraw();
     }, 3000)
-    var audio = new Audio('SIGMAmusic.mp3');
+
+    
     audio.play();
   }
+  var body = document.querySelector("body");
+  var lifeNumber = 12;
   var score = document.getElementById("scoreContainer");
   var points = 0;
   var topG =  document.getElementById("topG");
@@ -197,7 +218,7 @@ let isMovingRight = false;
 function moveToLeft() {
     if (!isMovingRight) {
         isMovingLeft = true;
-        if (pozycjaTransform >= -(gameScreenWitdh / 2)) {
+        if (pozycjaTransform >= -((gameScreenWitdh / 2)+50)) {
             pozycjaTransform -= 20;
             andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
         } else {
@@ -209,7 +230,7 @@ function moveToLeft() {
 function moveToRight() {
     if (!isMovingLeft) {
         isMovingRight = true;
-        if (pozycjaTransform <= (gameScreenWitdh / 2)) {
+        if (pozycjaTransform <= ((gameScreenWitdh / 2)+50)) {
             pozycjaTransform += 20;
             andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
         } else {
@@ -255,6 +276,7 @@ window.addEventListener('keyup', function(event) {
 
     let startY = -windowHeight/8; // Startowa pozycja Y poza ekranem
 
+
     function animate() {
         startY += 3; // Prędkość spadania, możesz dostosować według potrzeb
 
@@ -276,7 +298,9 @@ window.addEventListener('keyup', function(event) {
     function objectCatch(){
     const objectRect = object.getBoundingClientRect();
     const andrzejtataRect = topG.getBoundingClientRect();
-    
+    let boolean = false;
+    if(boolean == false)
+      {
     if (
         objectRect.right >= (andrzejtataRect.left+ 100) &&
         objectRect.left <= (andrzejtataRect.right- 100) &&
@@ -285,20 +309,36 @@ window.addEventListener('keyup', function(event) {
     ) {
       object.style.opacity = "0.7";
       console.log(object.src);
+      
       if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2)
       {
         console.log(object.src);
         object.src = "get_point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
-       
+
         points += 25;
         getscore();
+        
       }
         else{
         object.src = "loss-point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
+        lifeNumber -= 100;
+        console.log(lifeNumber);
         points -= 50;
         getscore();
+        if(lifeNumber<0)
+        {
+          setTimeout(function(){
+            gameWindow.style.display="none"
+          },1000)
+          document.getElementById("endGameContainer").style.display = "block"
+          body.parentNode.removeChild(gameWindow);
+          audio.pause();
+        }
+
       }
       
+    }
+    boolean=true;
     }
 
 }
@@ -314,6 +354,7 @@ window.addEventListener('keyup', function(event) {
     }
     score.innerHTML = displayPoints;
   }
+
 
 //   let cursor = document.getElementById("cursor");
 //   const userPosition = (e)=> {

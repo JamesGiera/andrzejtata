@@ -32,14 +32,7 @@
     .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.027);display: flex;justify-content: center;align-items: center;border-bottom: 2px solid rgb(0, 0, 0);;}
     #hiddenOnMobile{display: none;}
     .hiddenOnPc{display: none;}
-    @media screen and (max-width: 900px) {
-      body{text-align: center;}
-      .andrzejlogo{float: none;}
-      .andrzejlogo img{width: 70%;}
-      .hiddenOnPc{display: block;}
-      .forMobile{display: block;color: white;font-size: 80px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
-      #hiddenOnMobile{display: none;}
-      }
+    
     #gameWindow{height: 100%;width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
     .randomObjects{width: 100px;position: absolute;}
     #startContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
@@ -49,6 +42,15 @@
     #startContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
     #startCount{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
     #startCount p{font-size: 150px;font-family: "Jersey 15", sans-serif;color: white;}
+    @media screen and (max-width: 900px) {
+      body{text-align: center;}
+      .andrzejlogo{float: none;}
+      .andrzejlogo img{width: 70%;}
+      .hiddenOnPc{display: block;}
+      .forMobile{display: block;color: white;font-size: 80px;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
+      #hiddenOnMobile, #startContainer{display: none;}
+      
+      }
     @keyframes fallingObject {
     from {
         transform: translateY(0);

@@ -65,7 +65,7 @@
 </head>
 <body background="andrew-tate-top-g.gif">
   <div id="endGameContainer">
-    <p id="scoreContainer" style="font-size: 50px;text-align: center;margin-bottom: 50px;"></p>
+    <p id="scoreContainer2" style="font-size: 50px;text-align: center;margin-bottom: 50px;"></p>
     <a href="https://andrzejtata.pl/"><button id="gameStartBtn" onclick="reset();">RESET</button></a>
     <p>created by BOGDAN</p>
   </div>
@@ -155,6 +155,7 @@
   }
   var body = document.querySelector("body");
   var lifeNumber = 12;
+  var score2 = document.getElementById("scoreContainer2");
   var score = document.getElementById("scoreContainer");
   var points = 0;
   var topG =  document.getElementById("topG");
@@ -352,6 +353,7 @@ window.addEventListener('keyup', function(event) {
     } else {
         displayPoints = "-000" + Math.abs(points); // Dodaj znak minus i wartość bezwzględną liczby punktów
     }
+    score2.innerHTML = displayPoints;
     score.innerHTML = displayPoints;
   }
 

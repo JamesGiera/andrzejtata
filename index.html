@@ -84,7 +84,7 @@
   </div>
   <div class="userScore">
     <p>record 75892</p>
-    <p>00074233</p>
+    <p id="scoreContainer">000000</p>
   </div>
 
 </nav>
@@ -124,12 +124,14 @@
     },600);
     document.getElementById("hiddenOnMobile").style.display = "block";
     document.getElementById("startContainer").style.display = "none";
-   
+    
+    getscore();
     setInterval(() => {
       objectDraw();
     }, 3000)
   }
-
+  var score = document.getElementById("scoreContainer");
+  var points = 0;
   var topG =  document.getElementById("topG");
   var andrzejtata = document.getElementById("userHero_AndrzejTata");
   var leftArrow = document.getElementById("leftArrow");
@@ -278,18 +280,28 @@ window.addEventListener('keyup', function(event) {
         objectRect.top <= (andrzejtataRect.bottom - 10)
     ) {
       object.style.opacity = "0.7";
-      if(object.src != "matrix.png" && object.src != "podatki_sa_dla_bet.png")
+      console.log(object.src);
+      if(object.src != "https://andrzejtata.pl/matrix.png" && object.src != "https://andrzejtata.pl/podatki_sa_dla_bet.png")
+      {
+        console.log(object.src);
         object.src = "get_point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
-      else{
-        object.src = "loss-point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
+       
+        points += 25;
+        getscore();
       }
+        else{
+        object.src = "loss-point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
+        points -= 50;
+        getscore();
+      }
+      
     }
 
 }
   }
-
-  function objectMovement(){
-
+  
+  function getscore(){
+    score.innerHTML = "0000"+points;
   }
 
 //   let cursor = document.getElementById("cursor");

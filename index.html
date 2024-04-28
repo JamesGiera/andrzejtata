@@ -281,7 +281,7 @@ window.addEventListener('keyup', function(event) {
     ) {
       object.style.opacity = "0.7";
       console.log(object.src);
-      if(object.src != "https://andrzejtata.pl/matrix.png" && object.src != "https://andrzejtata.pl/podatki_sa_dla_bet.png")
+      if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2)
       {
         console.log(object.src);
         object.src = "get_point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
@@ -301,7 +301,14 @@ window.addEventListener('keyup', function(event) {
   }
   
   function getscore(){
-    score.innerHTML = "0000"+points;
+    
+    let displayPoints;
+    if (points >= 0) {
+    displayPoints = "0000" + points;
+    } else {
+        displayPoints = "-000" + Math.abs(points); // Dodaj znak minus i wartość bezwzględną liczby punktów
+    }
+    score.innerHTML = displayPoints;
   }
 
 //   let cursor = document.getElementById("cursor");

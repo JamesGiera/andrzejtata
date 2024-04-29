@@ -338,7 +338,7 @@ window.addEventListener('keyup', function(event) {
         console.log(object.src);
         object.src = "get_point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
 
-        points += 25;
+        points += 125;
         getscore();
         
       }
@@ -346,7 +346,7 @@ window.addEventListener('keyup', function(event) {
         object.src = "loss-point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
         lifeNumber -= 100;
         console.log(lifeNumber);
-        points -= 50;
+        points -= 150;
         getscore();
         if(lifeNumber<0)
         {

@@ -92,7 +92,7 @@
     <img src="andrzejtata_pl.png" alt="">
   </div>
   <div class="userScore">
-    <p>record 75892</p>
+    <p>record 95892</p>
     <p id="scoreContainer">000000</p>
   </div>
 
@@ -163,6 +163,16 @@ setInterval(() => {
     },500);
 }
     if(i<500)
+    {
+        setTimeout(function(){
+          objectDraw();
+          objectDraw();
+            setTimeout(function(){
+              objectDraw();
+            },500);
+        },500);
+    }
+  if(i<-500)
     {
         setTimeout(function(){
           objectDraw();

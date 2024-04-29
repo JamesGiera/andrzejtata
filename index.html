@@ -165,7 +165,11 @@ setInterval(() => {
     if(i<500)
     {
         setTimeout(function(){
-            objectDraw();
+          objectDraw();
+          objectDraw();
+            setTimeout(function(){
+              objectDraw();
+            },500);
         },500);
     }
     

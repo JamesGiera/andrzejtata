@@ -212,6 +212,12 @@ setInterval(() => {
   console.log(gameScreenHeight);
 
 
+  leftArrow.addEventListener('click', function() {
+    moveToLeft();
+  });
+  rightArrow.addEventListener('click', function() {
+    moveToRight();
+  });
 
 
   window.addEventListener('keydown', function(event) {

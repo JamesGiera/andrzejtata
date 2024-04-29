@@ -241,7 +241,7 @@ function moveToLeft() {
     if (!isMovingRight) {
         isMovingLeft = true;
         if (pozycjaTransform >= -((gameScreenWitdh / 2)+50)) {
-            pozycjaTransform -= 20;
+            pozycjaTransform -= 25;
             andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
         } else {
             leftArrow.style.opacity = "0%";
@@ -253,7 +253,7 @@ function moveToRight() {
     if (!isMovingLeft) {
         isMovingRight = true;
         if (pozycjaTransform <= ((gameScreenWitdh / 2)+50)) {
-            pozycjaTransform += 20;
+            pozycjaTransform += 25;
             andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
         } else {
             rightArrow.style.opacity = "0%";

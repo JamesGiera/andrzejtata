@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <!-- Created by Bartlomiej Giera -->
   <title>HUSTLERS TATA MOTORS</title>
   <!-- Google tag (gtag.js) -->
+  <!-- Created by Bartlomiej Giera -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TKXYGZP6G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -49,7 +49,7 @@
     <img src="andrzejtata_pl.png" alt="">
   </div>
   <div class="userScore">
-    <p>record 1 258 929</p>
+    <p >record 1 258 929</p>
     <p id="scoreContainer">000000</p>
   </div>
 
@@ -71,11 +71,14 @@
   </section>
 </div>
 <script>
+
+  let speed;
   let boolean2 = true;
   let boolean3 = true;
   let i = 3000;
   var audio = new Audio('Tourner-Dans-Le-Vide-PHONK-REMIX-_Andrew-Tate-Theme-Song_.mp3');
   function gameStart(){
+    speed = 4;
     setTimeout(function(){
       objectCatch();
     },0)
@@ -110,6 +113,7 @@
       }
       if(i<2000)
       {
+        speed = 5;
         setTimeout(function(){
             objectDraw();
         },500);
@@ -122,8 +126,8 @@
       }
       if(i<500)
       {
+        speed = 6;
         setTimeout(function(){
-          objectDraw();
           objectDraw();
           setTimeout(function(){
               objectDraw();
@@ -132,8 +136,8 @@
       }
       if(i<-500)
         {
+          speed = 7;
           setTimeout(function(){
-            objectDraw();
             objectDraw();
             setTimeout(function(){
               objectDraw();
@@ -144,7 +148,6 @@
     audio.play();
     audio.loop = true;
   }
-  
   var body = document.querySelector("body");
   var lifeNumber = 12;
   var score2 = document.getElementById("scoreContainer2");
@@ -177,6 +180,7 @@
     moveToRight();
   });
 
+
   window.addEventListener('keydown', function(event) {
     rightArrow.style.opacity = "100%";
     leftArrow.style.opacity = "100%";
@@ -194,6 +198,7 @@
               leftArrow.style.filter = "invert(0%)";
             }
           });
+
         break;
 
         case 68:
@@ -246,12 +251,15 @@
       case 65:
       case 37:  
       isMovingLeft = false;
+
       break;
 
       case 68:
       case 39:
       isMovingRight = false;
-      break;  
+      break;
+
+      
     }
   }, false);
   
@@ -271,7 +279,7 @@
 
 
     function animate() {
-        startY += 5;   
+        startY += speed;   
         object.style.top = startY + "px";    
 
         if (startY < windowHeight) {
@@ -298,21 +306,23 @@
         object.style.opacity = "0.7";
         console.log(object.src);
         
-        if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2)
+        if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2 && randomNumberToGetElementFromTab != 4)
         {
           console.log(object.src);
           object.src = "get_point.png";
 
           points += 125;
           getscore();
+          topG.src = "szczesliwyandrzej.png";
           
         }
           else{
-          object.src = "loss-point.png";
+          object.src = "loss-point.png"; 
           lifeNumber -= 100;
           console.log(lifeNumber);
           points -= 150;
           getscore();
+          topG.src = "smutnyandrzej.png";
           if(lifeNumber<0)
           {
             setTimeout(function(){
@@ -325,6 +335,9 @@
           }
 
         }
+        setTimeout(function(){
+            topG.src = "topG.png"
+          },500)
         
       }
         boolean=true;
@@ -336,7 +349,7 @@
     if (points >= 0) {
     displayPoints = "0000" + points;
     } else {
-        displayPoints = "-000" + Math.abs(points); // Dodaj znak minus i wartość bezwzględną liczby punktów
+        displayPoints = "-000" + Math.abs(points);
     }
     score2.innerHTML = displayPoints;
     score.innerHTML = displayPoints;

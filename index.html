@@ -129,6 +129,7 @@
         speed = 6;
         setTimeout(function(){
           objectDraw();
+          objectDraw();
           setTimeout(function(){
               objectDraw();
               },500);
@@ -138,6 +139,7 @@
         {
           speed = 7;
           setTimeout(function(){
+            objectDraw();
             objectDraw();
             setTimeout(function(){
               objectDraw();
@@ -312,12 +314,13 @@
           object.src = "get_point.png";
 
           points += 125;
+          score.style.color = "lightgreen";
           getscore();
           topG.src = "szczesliwyandrzej.png";
           
         }
           else{
-          object.src = "loss-point.png"; 
+          object.src = "loss-point.png";
           lifeNumber -= 100;
           console.log(lifeNumber);
           points -= 150;
@@ -337,6 +340,7 @@
         }
         setTimeout(function(){
             topG.src = "topG.png"
+            score.style.color = "white";
           },500)
         
       }

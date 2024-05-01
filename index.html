@@ -19,42 +19,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    #cursor{width: 100px;z-index: 0;}
-    body{background-size: 100%;overflow-y: hidden;-webkit-appearance: none;}
-    html{cursor: cell;}
-    nav{width: 100%;clear: both;}
-    .nav::after {content: "";display: table;clear: both;}
-    .andrzejlogo{float: left;}
-    .andrzejlogo img{width: 300px;padding: 20px;}
-    .userScore{padding: 20px;float: right;line-height: 5px;text-align: right;color: white;font-family: "Jersey 15", sans-serif;font-size: 40px;transform: translateY(-5%);margin-right: 10px;}
-    #userHero_AndrzejTata #topG{width: 110px;}
-    #userHero_AndrzejTata #topG:hover{filter: invert(10%)}
-    #userHero_AndrzejTata{transition: transform 0.2s;margin-bottom: 5px;}
-    .movementway{position: fixed;width: 100%;background-color: rgba(245, 245, 220, 0);bottom: 5%;}
-    .movementArrows{width: 110px;transform: translateY(60px);margin: 20px;}
-    .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.027);display: flex;justify-content: center;align-items: center;border-bottom: 2px solid rgb(0, 0, 0);;}
-    #hiddenOnMobile{display: none;}
-    .hiddenOnPc{display: none;}
-    #gameWindow{height: 100%;width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
-    .randomObjects{width: 100px;position: absolute;}
-    #startContainer, #endGameContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
-    #startContainer img, #endGameContainer img{width: 700px;}
-    #gameStartBtn{font-family: "Jersey 15", sans-serif;font-size: 70px; z-index: 2;width: 300px;transform: translateX(-25px);margin-top: 50px;-webkit-appearance: none;}
-    #gameStartBtn:hover {background-color: #3e8e41;box-shadow: 0 5px #666;cursor: pointer;}
-    #startContainer p, #endGameContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
-    #startCount{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
-    #startCount p{font-size: 150px;font-family: "Jersey 15", sans-serif;color: white;}
-    @media screen and (max-width: 900px) {
-      body{text-align: center;}
-      .andrzejlogo{float: none;}
-      .andrzejlogo img{width: 70%;}
-      .hiddenOnPc{display: block;}
-      .forMobile{display: block;color: white;font-size: 380%;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
-      #hiddenOnMobile, #startContainer{display: none;}
-    }
-    #endGameContainer{display: none;}
-  </style>
 </head>
 <body background="andrew-tate-top-g.gif">
   <div id="endGameContainer">

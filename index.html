@@ -30,7 +30,7 @@
     <p id="countNumberConteiner"></p>
   </div>
   <div id="startContainer" class="hiddenOnMobile">
-    <img src="/andrzejtata_pl.png" alt="">
+    <img src="andrzejtata_pl.png" alt="">
     <button id="gameStartBtn" onclick="gameStart();">START</button>
     <p>created by BOGDAN</p>
   </div>
@@ -71,12 +71,14 @@
   </section>
 </div>
 <script>
-
   let boolean2 = true;
-  
+  let boolean3 = true;
   let i = 3000;
   var audio = new Audio('Tourner-Dans-Le-Vide-PHONK-REMIX-_Andrew-Tate-Theme-Song_.mp3');
   function gameStart(){
+    setTimeout(function(){
+      objectCatch();
+    },0)
     var countNumberConteiner = document.getElementById("countNumberConteiner");
     setTimeout(function(){
       countNumberConteiner.innerHTML = "3";
@@ -142,6 +144,7 @@
     audio.play();
     audio.loop = true;
   }
+  
   var body = document.querySelector("body");
   var lifeNumber = 12;
   var score2 = document.getElementById("scoreContainer2");
@@ -174,40 +177,39 @@
     moveToRight();
   });
 
-
   window.addEventListener('keydown', function(event) {
     rightArrow.style.opacity = "100%";
     leftArrow.style.opacity = "100%";
-    switch (event.keyCode) {
-      case 65:
-      case 37:  
-        console.log("lewy");
-        leftArrow.style.filter = "invert(80%)";
-        moveToLeft();
+    if(boolean3 == true)
+    {
+      switch (event.keyCode) {
+        case 65:
+        case 37:  
+          console.log("lewy");
+          leftArrow.style.filter = "invert(80%)";
+          moveToLeft();
+          window.addEventListener('keyup', function(event) {
+            if(event.keyCode == 65 || event.keyCode == 37)
+            {
+              leftArrow.style.filter = "invert(0%)";
+            }
+          });
+        break;
+
+        case 68:
+        case 39:
+        console.log("prawy");
+        rightArrow.style.filter = "invert(80%)";
+        moveToRight();
         window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 65 || event.keyCode == 37)
-          {
-            leftArrow.style.filter = "invert(0%)";
-          }
-        });
-
-      break;
-
-      case 68:
-      case 39:
-      console.log("prawy");
-      rightArrow.style.filter = "invert(80%)";
-      moveToRight();
-      window.addEventListener('keyup', function(event) {
-          if(event.keyCode == 68 || event.keyCode == 39)
-          {
-            rightArrow.style.filter = "invert(0%)";
-          }
-        });
-      break;
-
-      
-    }
+            if(event.keyCode == 68 || event.keyCode == 39)
+            {
+              rightArrow.style.filter = "invert(0%)";
+            }
+          });
+        break;
+      }
+  }
   }, false);
 
   let isMovingLeft = false;
@@ -244,15 +246,12 @@
       case 65:
       case 37:  
       isMovingLeft = false;
-
       break;
 
       case 68:
       case 39:
       isMovingRight = false;
-      break;
-
-      
+      break;  
     }
   }, false);
   
@@ -291,8 +290,8 @@
       if(boolean == false)
         {
       if (
-          objectRect.right >= (andrzejtataRect.left+ 100) &&
-          objectRect.left <= (andrzejtataRect.right- 100) &&
+          objectRect.right >= (andrzejtataRect.left+ 80) &&
+          objectRect.left <= (andrzejtataRect.right- 80) &&
           objectRect.bottom >= (andrzejtataRect.top + 10) &&
           objectRect.top <= (andrzejtataRect.bottom - 10)
       ) {
@@ -320,6 +319,7 @@
               gameWindow.style.display="none"
             },1000)
             document.getElementById("endGameContainer").style.display = "block"
+            boolean3 = false;
             body.parentNode.removeChild(gameWindow);
             audio.pause();
           }
@@ -336,7 +336,7 @@
     if (points >= 0) {
     displayPoints = "0000" + points;
     } else {
-        displayPoints = "-000" + Math.abs(points);
+        displayPoints = "-000" + Math.abs(points); // Dodaj znak minus i wartość bezwzględną liczby punktów
     }
     score2.innerHTML = displayPoints;
     score.innerHTML = displayPoints;

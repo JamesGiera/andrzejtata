@@ -282,11 +282,18 @@
     console.log(randomPositionX);
 
     let startY = -windowHeight/8; 
-
+    let tymczasowa;
+    let tymczasowystring;
 
     function animate() {
-        startY += speed;   
+        tymczasowystring = startY + "px";
+        tymczasowa = startY;
+        startY += speed; 
         object.style.top = startY + "px";    
+        if(tymczasowa!=startY )
+        {
+          objectCatch();
+        }
 
         if (startY < windowHeight) {
             requestAnimationFrame(animate); 

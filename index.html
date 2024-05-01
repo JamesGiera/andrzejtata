@@ -3,6 +3,7 @@
 <head>
   <title>HUSTLERS TATA MOTORS</title>
   <!-- Google tag (gtag.js) -->
+  <!-- Created by Bartlomiej Giera -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8TKXYGZP6G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -15,25 +16,18 @@
   <meta property="og:title" content="ANDRZEJ TATA"/>
   <meta name="theme-color" content="#34eb7d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-       #cursor{width: 100px;z-index: 0;}
-   
+    #cursor{width: 100px;z-index: 0;}
     body{background-size: 100%;overflow-y: hidden;-webkit-appearance: none;}
     html{cursor: cell;}
     nav{width: 100%;clear: both;}
-    .nav::after {
-    content: "";
-    display: table;
-    clear: both;
-    }
+    .nav::after {content: "";display: table;clear: both;}
     .andrzejlogo{float: left;}
     .andrzejlogo img{width: 300px;padding: 20px;}
-    .userScore{padding: 20px;float: right;line-height: 5px;text-align: right;color: white;font-family: "Jersey 15", sans-serif;font-size: 40px;transform: translateY(-5%);margin-right: 10px;
-    }
-    
+    .userScore{padding: 20px;float: right;line-height: 5px;text-align: right;color: white;font-family: "Jersey 15", sans-serif;font-size: 40px;transform: translateY(-5%);margin-right: 10px;}
     #userHero_AndrzejTata #topG{width: 110px;}
     #userHero_AndrzejTata #topG:hover{filter: invert(10%)}
     #userHero_AndrzejTata{transition: transform 0.2s;margin-bottom: 5px;}
@@ -42,7 +36,6 @@
     .movingLimitSpace{width: 75%;background-color: rgba(165, 42, 42, 0.027);display: flex;justify-content: center;align-items: center;border-bottom: 2px solid rgb(0, 0, 0);;}
     #hiddenOnMobile{display: none;}
     .hiddenOnPc{display: none;}
-    
     #gameWindow{height: 100%;width: 75%;position: absolute;bottom: 5%;margin-left: auto;margin-right: auto;}
     .randomObjects{width: 100px;position: absolute;}
     #startContainer, #endGameContainer{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
@@ -59,10 +52,9 @@
       .hiddenOnPc{display: block;}
       .forMobile{display: block;color: white;font-size: 380%;font-family: "Jersey 15", sans-serif;width: 80%;margin-left: auto;margin-right: auto;}
       #hiddenOnMobile, #startContainer{display: none;}
-      
-      }
-#endGameContainer{display: none;}
-      </style>
+    }
+    #endGameContainer{display: none;}
+  </style>
 </head>
 <body background="andrew-tate-top-g.gif">
   <div id="endGameContainer">
@@ -139,54 +131,50 @@
     },600);
     document.getElementById("hiddenOnMobile").style.display = "block";
     document.getElementById("startContainer").style.display = "none";
-    
     getscore();
-setInterval(() => {
-  objectDraw();
-  console.log(i+"i")
-  i-=100;
-  if(i<2500)
-  {
-    setTimeout(function(){
-        objectDraw();
-    },500);
-}
-  if(i<2000)
-  {
-    setTimeout(function(){
-        objectDraw();
-    },500);
-}
-  if(i<1000)
-  {
-    setTimeout(function(){
-        objectDraw();
-    },500);
-}
-    if(i<500)
-    {
+    setInterval(() => {
+      objectDraw();
+      console.log(i+"i")
+      i-=100;
+      if(i<2500)
+      {
         setTimeout(function(){
-          objectDraw();
-          objectDraw();
-            setTimeout(function(){
-              objectDraw();
-            },500);
+            objectDraw();
         },500);
-    }
-  if(i<-500)
-    {
+      }
+      if(i<2000)
+      {
+        setTimeout(function(){
+            objectDraw();
+        },500);
+      }
+      if(i<1000)
+      {
+        setTimeout(function(){
+            objectDraw();
+        },500);
+      }
+      if(i<500)
+      {
         setTimeout(function(){
           objectDraw();
           objectDraw();
+          setTimeout(function(){
+              objectDraw();
+              },500);
+          },500);
+      }
+      if(i<-500)
+        {
+          setTimeout(function(){
+            objectDraw();
+            objectDraw();
             setTimeout(function(){
               objectDraw();
-            },500);
-        },1000);
-    }
-    
-}, 3000)
-
-    
+              },500);
+          },1000);
+        }
+    }, 3000)   
     audio.play();
     audio.loop = true;
   }
@@ -203,15 +191,17 @@ setInterval(() => {
   var pozycjaTransform = 0;
   var windowWidth = window.innerWidth;
   var windowHeight = window.innerHeight;
+
   window.addEventListener("resize",function() {
       windowWidth = window.innerWidth
       windowHeight = window.innerHeight;});
+
   if(windowWidth < 1700)
       windowWidth -= 100;
+
   var gameScreenWitdh = ((windowWidth/100)*60);
   var gameScreenHeight = ((windowWidth/100)*95);
   console.log(gameScreenHeight);
-
 
   leftArrow.addEventListener('click', function() {
     moveToLeft();
@@ -257,9 +247,9 @@ setInterval(() => {
   }, false);
 
   let isMovingLeft = false;
-let isMovingRight = false;
+  let isMovingRight = false;
 
-function moveToLeft() {
+  function moveToLeft() {
     if (!isMovingRight) {
         isMovingLeft = true;
         if (pozycjaTransform >= -((gameScreenWitdh / 2)+50)) {
@@ -269,9 +259,9 @@ function moveToLeft() {
             leftArrow.style.opacity = "0%";
         }
     }
-}
+  }
 
-function moveToRight() {
+  function moveToRight() {
     if (!isMovingLeft) {
         isMovingRight = true;
         if (pozycjaTransform <= ((gameScreenWitdh / 2)+50)) {
@@ -281,9 +271,9 @@ function moveToRight() {
             rightArrow.style.opacity = "0%";
         }
     }
-}
+  }
 
-window.addEventListener('keyup', function(event) {
+  window.addEventListener('keyup', function(event) {
     rightArrow.style.opacity = "100%";
     leftArrow.style.opacity = "100%";
     switch (event.keyCode) {
@@ -302,10 +292,6 @@ window.addEventListener('keyup', function(event) {
     }
   }, false);
   
- 
-
-
-
   function objectDraw(){
     const tab = ["kaska.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png"];
     let randomNumberToGetElementFromTab = Math.floor(Math.random() * tab.length);
@@ -318,98 +304,79 @@ window.addEventListener('keyup', function(event) {
     gameWindow.appendChild(object);
     console.log(randomPositionX);
 
-    let startY = -windowHeight/8; // Startowa pozycja Y poza ekranem
+    let startY = -windowHeight/8; 
 
 
     function animate() {
-        startY += 3; // Prędkość spadania, możesz dostosować według potrzeb
+        startY += 5;   
+        object.style.top = startY + "px";    
 
-        // Ustawienie nowej pozycji obiektu
-        object.style.top = startY + "px";
-
-        // Sprawdzenie, czy obiekt wciąż znajduje się w widoku okna przeglądarki
         if (startY < windowHeight) {
-            requestAnimationFrame(animate); // Kontynuacja animacji
+            requestAnimationFrame(animate); 
             objectCatch();
         } else {
               object.parentNode.removeChild(object);
-
-
         }
     }
 
-    animate(); // Rozpoczęcie animacji
+    animate();
     function objectCatch(){
-    const objectRect = object.getBoundingClientRect();
-    const andrzejtataRect = topG.getBoundingClientRect();
-    let boolean = false;
-    if(boolean == false)
-      {
-    if (
-        objectRect.right >= (andrzejtataRect.left+ 100) &&
-        objectRect.left <= (andrzejtataRect.right- 100) &&
-        objectRect.bottom >= (andrzejtataRect.top + 10) &&
-        objectRect.top <= (andrzejtataRect.bottom - 10)
-    ) {
-      object.style.opacity = "0.7";
-      console.log(object.src);
-      
-      if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2)
-      {
+      const objectRect = object.getBoundingClientRect();
+      const andrzejtataRect = topG.getBoundingClientRect();
+      let boolean = false;
+      if(boolean == false)
+        {
+      if (
+          objectRect.right >= (andrzejtataRect.left+ 100) &&
+          objectRect.left <= (andrzejtataRect.right- 100) &&
+          objectRect.bottom >= (andrzejtataRect.top + 10) &&
+          objectRect.top <= (andrzejtataRect.bottom - 10)
+      ) {
+        object.style.opacity = "0.7";
         console.log(object.src);
-        object.src = "get_point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
+        
+        if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2)
+        {
+          console.log(object.src);
+          object.src = "get_point.png";
 
-        points += 125;
-        getscore();
+          points += 125;
+          getscore();
+          
+        }
+          else{
+          object.src = "loss-point.png";
+          lifeNumber -= 100;
+          console.log(lifeNumber);
+          points -= 150;
+          getscore();
+          if(lifeNumber<0)
+          {
+            setTimeout(function(){
+              gameWindow.style.display="none"
+            },1000)
+            document.getElementById("endGameContainer").style.display = "block"
+            body.parentNode.removeChild(gameWindow);
+            audio.pause();
+          }
+
+        }
         
       }
-        else{
-        object.src = "loss-point.png"; // Usunięcie obiektu w przypadku kolizji z 'andrzejtata'
-        lifeNumber -= 100;
-        console.log(lifeNumber);
-        points -= 150;
-        getscore();
-        if(lifeNumber<0)
-        {
-          setTimeout(function(){
-            gameWindow.style.display="none"
-          },1000)
-          document.getElementById("endGameContainer").style.display = "block"
-          body.parentNode.removeChild(gameWindow);
-          audio.pause();
-        }
-
+        boolean=true;
       }
-      
-    }
-    boolean=true;
-    }
-
-}
+      }
   }
-  
   function getscore(){
-    
     let displayPoints;
     if (points >= 0) {
     displayPoints = "0000" + points;
     } else {
-        displayPoints = "-000" + Math.abs(points); // Dodaj znak minus i wartość bezwzględną liczby punktów
+        displayPoints = "-000" + Math.abs(points);
     }
     score2.innerHTML = displayPoints;
     score.innerHTML = displayPoints;
   }
-
-
-//   let cursor = document.getElementById("cursor");
-//   const userPosition = (e)=> {
-//   const mouseY = e.clientY - 190;
-//   const mouseX = e.clientX - 50;
-//   cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
- 
-// }
-
-//   window.addEventListener('mousemove', userPosition);
 </script>
 </body>
 </html>

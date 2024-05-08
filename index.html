@@ -105,50 +105,30 @@
       objectDraw();
       console.log(i+"i")
       i-=100;
-      if(i<2500)
-      {
-        setTimeout(function(){
+      setTimeout(function() {
+        if (i < -500) {
+          setTimeout(function() {
             objectDraw();
-        },500);
-      }
-      if(i<2000)
-      {
-        speed = 5;
-        objectDraw();
-        setTimeout(function(){
-            objectDraw();
-        },500);
-      }
-      if(i<1000)
-      {
-        setTimeout(function(){
-            objectDraw();
-        },500);
-      }
-      if(i<500)
-      {
-        objectDraw();
-        speed = 6;
-        setTimeout(function(){
-          objectDraw();
-          objectDraw();
-          setTimeout(function(){
+            setTimeout(function() {
               objectDraw();
-              },500);
-          },500);
-      }
-      if(i<-500)
-        {
-          speed = 7;
-          setTimeout(function(){
+            }, 500);
+          }, 1000);
+        } else {
+          if (i < 500) {
+            speed = 6;
+          }
+          if (i < 1000) {
+            setTimeout(objectDraw, 500);
+          }
+          if (i < 2000) {
             objectDraw();
-            objectDraw();
-            setTimeout(function(){
-              objectDraw();
-              },500);
-          },1000);
+            setTimeout(objectDraw, 800);
+          }
+          if (i < 2500) {
+            setTimeout(objectDraw, 1000);
+          }
         }
-    }, 3000)   
+      }, 3000);
     audio.play();
     audio.loop = true;
   }

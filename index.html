@@ -105,34 +105,46 @@
       objectDraw();
       console.log(i+"i")
       i-=100;
-      setTimeout(function() {
-        if (i < -500) {
-          setTimeout(function() {
+      if(i<2500)
+      {
+        setTimeout(function(){
             objectDraw();
-            setTimeout(function() {
+        },500);
+      }
+      if(i<2000)
+      {
+        objectDraw();
+        setTimeout(function(){
+            objectDraw();
+        },500);
+      }
+      if(i<1000)
+      {
+        setTimeout(function(){
+            objectDraw();
+        },500);
+      }
+      if(i<500)
+      {
+        speed = 6;
+        objectDraw();
+        setTimeout(function(){
+          objectDraw();
+          setTimeout(function(){
               objectDraw();
-            }, 500);
-          }, 1000);
-        } else {
-          if (i < 500) {
-            speed = 6;
-          }
-          if (i < 1000) {
-            setTimeout(objectDraw, 500);
-          }
-          if (i < 2000) {
+              },500);
+          },500);
+      }
+      if(i<-500)
+        {
+          setTimeout(function(){
             objectDraw();
-            setTimeout(objectDraw, 800);
-          }
-          if (i < 2500) {
-            setTimeout(objectDraw, 1000);
-          }
+            setTimeout(function(){
+              objectDraw();
+              },500);
+          },1000);
         }
-      }, 3000);
-    audio.play();
-    audio.loop = true;
-  });
-  }
+    }, 3000)};
   var body = document.querySelector("body");
   var lifeNumber = 12;
   var score2 = document.getElementById("scoreContainer2");

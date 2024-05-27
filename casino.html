@@ -36,14 +36,14 @@
 <body>
     <img id="winningConfetti" src="https://media.tenor.com/0mHUtRFCt5MAAAAi/confetti-confete.gif" style="position: absolute;width: 100%;bottom:-800px;z-index: -1;display: none;" alt="" >
     <div id="gambling-slot-machine">
-        <img src="img/7gazylionow.png" class="gamblingdropitems" id="element4" alt="" style="margin-left: 50px;">
-        <img src="img/luxurysamochod.png" class="gamblingdropitems" id="element2" style="width: 110px;padding-right: 5px;" alt="">
-        <img src="img/watermellon.png" class="gamblingdropitems" id="element3" alt="">
+        <img src="7gazylionow.png" class="gamblingdropitems" id="element4" alt="" style="margin-left: 50px;">
+        <img src="luxurysamochod.png" class="gamblingdropitems" id="element2" style="width: 110px;padding-right: 5px;" alt="">
+        <img src="watermellon.png" class="gamblingdropitems" id="element3" alt="">
         <div id="start-btn"></div>
     </div>
     <p id="user-score">1000000 $</p>
     <div id="guide">
-    <img src="img/SIGMA.png" alt="" style="width: 300px;">
+    <img src="SIGMA.png" alt="" style="width: 300px;">
     <p>
     1) Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tempore quod dolorum illo, voluptatum dolore ullam pariatur. Quaerat reprehenderit quasi cumque suscipit nesciunt non expedita necessitatibus totam, eos ad reiciendis?
     </p>
@@ -56,10 +56,10 @@
         gamblingStartBtn.addEventListener("click",function(){
             userScore -= 5000000;
             showScore();
-            document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("img/gamblingmachinetrue.png")';
+            document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("gamblingmachinetrue.png")';
             gamblingStartBtn.style.transform = "translate(70px,165px)";
             setTimeout(function() {
-                document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("img/gamblingmachinefalse.png")';
+                document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("gamblingmachinefalse.png")';
                 gamblingStartBtn.style.transform = "translate(70px,-110px)";
             }, 300);
             randomGamblingItem();
@@ -71,7 +71,7 @@
         function randomGamblingItem(){
             userScoreContainer.style.animationName = "undefined";
             document.getElementById("winningConfetti").style.display="none";
-            const srcTab = ["img/luxurysamochod.png","img/watermellon.png","img/7gazylionow.png","img/7gazylionow.png"];
+            const srcTab = ["luxurysamochod.png","watermellon.png","7gazylionow.png","7gazylionow.png"];
             let i = 0;
             let rollspeed = 50;
             const intervalId = setInterval(function() {

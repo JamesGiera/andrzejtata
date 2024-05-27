@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-image: url("https://t3.ftcdn.net/jpg/06/47/02/30/360_F_647023067_QaXh4EsY0GfxMMrZLfNeEnSUOUCnmISl.jpg");background-size: 100%;display: flex;justify-content: center;flex-direction: column;align-items: center;font-family: "Jersey 15", sans-serif;overflow-y: hidden;}
+        #gambling-slot-machine{background-image: url("img/gamblingmachinefalse.png");background-size: 100%; display: flex;justify-content: center;align-items: center;height: 500px;width: 500px;transition: background-image 0.1s;}
+        #gambling-slot-machine img{width: 80px;}
+        #user-score{color: wheat;font-size: 70px;margin-top: 0px; animation-duration: 0.3s;animation-iteration-count: infinite;}
+        #guide{font-size: 20px;position: absolute;left: 20px;width: 300px;color: white;top: -40px;}
+        #start-btn {transform: translate(70px,-110px);width: 50px;height: 50px;background-color: rgba(255, 0, 0, 0.623);border-radius: 50%;cursor: pointer;transition: background-color 0.2s ease;}
+        #start-btn:hover{background-color: rgba(255, 0, 0, 0.781);}
+
+        @keyframes winningAnimation {
+            0%   {color:red;font-size: 90px;}
+            100%  {color:white;font-size: 80px;}
+
+        }
+
+        @keyframes winningAminationforItems{
+            0%   {width: 90px;}
+            100%  {width: 80px;}
+        }
+        @keyframes winningAminationforItem2{
+            0%   {width: 120px;}
+            100%  {width: 110px;}
+        }
+    </style>
+</head>
+<body>
+    <img id="winningConfetti" src="https://media.tenor.com/0mHUtRFCt5MAAAAi/confetti-confete.gif" style="position: absolute;width: 100%;bottom:-800px;z-index: -1;display: none;" alt="" >
+    <div id="gambling-slot-machine">
+        <img src="img/7gazylionow.png" class="gamblingdropitems" id="element4" alt="" style="margin-left: 50px;">
+        <img src="img/luxurysamochod.png" class="gamblingdropitems" id="element2" style="width: 110px;padding-right: 5px;" alt="">
+        <img src="img/watermellon.png" class="gamblingdropitems" id="element3" alt="">
+        <div id="start-btn"></div>
+    </div>
+    <p id="user-score">1000000 $</p>
+    <div id="guide">
+    <img src="img/SIGMA.png" alt="" style="width: 300px;">
+    <p>
+    1) Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tempore quod dolorum illo, voluptatum dolore ullam pariatur. Quaerat reprehenderit quasi cumque suscipit nesciunt non expedita necessitatibus totam, eos ad reiciendis?
+    </p>
+    <p>
+    2) Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, necessitatibus odit.
+    </p>
+    <script>
+        var gamblingStartBtn = document.getElementById("start-btn");
+        var userScoreContainer = document.getElementById("user-score");
+        gamblingStartBtn.addEventListener("click",function(){
+            userScore -= 5000000;
+            showScore();
+            document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("img/gamblingmachinetrue.png")';
+            gamblingStartBtn.style.transform = "translate(70px,165px)";
+            setTimeout(function() {
+                document.getElementById("gambling-slot-machine").style.backgroundImage = 'url("img/gamblingmachinefalse.png")';
+                gamblingStartBtn.style.transform = "translate(70px,-110px)";
+            }, 300);
+            randomGamblingItem();
+        });
+        var element4 = document.getElementById("element4");
+        var element2 = document.getElementById("element2");
+        var element3 = document.getElementById("element3");
+        let userScore = 1000000;
+        function randomGamblingItem(){
+            userScoreContainer.style.animationName = "undefined";
+            document.getElementById("winningConfetti").style.display="none";
+            const srcTab = ["img/luxurysamochod.png","img/watermellon.png","img/7gazylionow.png","img/7gazylionow.png"];
+            let i = 0;
+            let rollspeed = 50;
+            const intervalId = setInterval(function() {
+                if (i < 8) {
+                    element4.src = srcTab[Math.floor(Math.random() * 4)];
+                    element2.src = srcTab[Math.floor(Math.random() * 4)];
+                    element3.src = srcTab[Math.floor(Math.random() * 4)];
+                    i++;
+                    if(element1.src == srcTab[1] || element2.src == srcTab[1] || element3.src == srcTab[1])
+                        userScore += 33000;
+                    if(element1.src == srcTab[2] || element2.src == srcTab[2] || element3.src == srcTab[2])
+                        userScore += 23000;
+                } else {
+                    clearInterval(intervalId);
+                        
+                    if(element4.src == element2.src && element3.src == element2.src)
+                    {
+                        userScore += 99872899;
+                        showScore();
+                        userScoreContainer.style.animationName = "winningAnimation";
+                        document.getElementById("winningConfetti").style.display="block";
+                        
+                    }
+                }
+            }, rollspeed);
+            
+        }
+        
+        function showScore(){
+                userScoreContainer.innerText = userScore + " $";
+        }
+    </script>
+</div>
+</body>
+</html>

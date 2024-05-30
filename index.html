@@ -99,7 +99,6 @@ document.getElementById("adCloseBtn").addEventListener("click", function() {
 let speed;
 let i = 3000;
 const audio = new Audio('Tourner-Dans-Le-Vide-_Hardstyle_.mp3');
-audio.play();
 let isMovingLeft = false;
 let isMovingRight = false;
 let pozycjaTransform = 0;
@@ -187,6 +186,7 @@ function moveToRight() {
   }
 }
 function gameStart() {
+  audio.play();
   speed = 4;
   setTimeout(function() {
     drawObject();

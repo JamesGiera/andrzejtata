@@ -19,14 +19,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-<style>
-    #ad{position: fixed;bottom: 20px;width: 100%;display: flex;justify-content: center;z-index: 100;}
-    #ad img{width: 600px;padding-right: 50px;cursor: pointer;}
+  <style>
+
   </style>
 </head>
 <body background="andrew-tate-top-g.gif">
   <div id="ad">
-    <img src="casino-ad2.png" alt="" id="adIMG">
+    <img src="img/casino-ad2.png" alt="" id="adIMG">
       <div style="transform: translate(-40px,-20px);">
         <svg style="cursor: pointer;" id="adCloseBtn" width="34px" height="34px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.9393 12L6.9696 15.9697L8.03026 17.0304L12 13.0607L15.9697 17.0304L17.0304 15.9697L13.0607 12L17.0303 8.03039L15.9696 6.96973L12 10.9393L8.03038 6.96973L6.96972 8.03039L10.9393 12Z" fill="#080341"></path> </g></svg>
     </div>
@@ -42,10 +41,15 @@
   </div>
   <div id="startContainer" class="hiddenOnMobile">
     <img src="andrzejtata_pl.png" alt="">
-    <button id="gameStartBtn" onclick="gameStart();">START</button>
+    <div style="display: inline-flex;">
+      <button id="gameStartBtn" onclick="gameStart();" style="margin-right:10px ;">START</button>
+      <button id="gameStartBtn1vs1" onclick="window.location.href = 'https://andrzejtata.pl/pojedyneksigm'">
+        <img src="1vs1sigma.png" title="1vs1">
+      </button>
+    </div>
     <p>created by BOGDAN</p>
   </div>
-<div class="hiddenOnPc">
+<div class="hiddenOnPc" >
   <div class="andrzejlogo">
     <img src="andrzejtata_pl.png" alt="">
   </div>
@@ -83,302 +87,257 @@
   </section>
 </div>
 <script>
-  //ad 
-  document.getElementById("adIMG").addEventListener("click", function(){
-    window.open('https://andrzejtata.pl/casino', '_blank');
-  })
-  document.getElementById("adCloseBtn").addEventListener("click", function(){
-    document.getElementById("ad").style.display = "none";
-  })
-  
-  let speed;
-  let boolean2 = true;
-  let boolean3 = true;
-  let i = 3000;
-  var audio = new Audio('Tourner-Dans-Le-Vide-_Hardstyle_.mp3');
-  function gameStart(){
-    speed = 5;
-    setTimeout(function(){
-      objectCatch();
-    },0)
-    var countNumberConteiner = document.getElementById("countNumberConteiner");
-    setTimeout(function(){
-      countNumberConteiner.innerHTML = "3";
-      setTimeout(function(){
-        countNumberConteiner.innerHTML = "2";
-        setTimeout(function(){
-          countNumberConteiner.innerHTML = "1";
-          setTimeout(function(){
-            countNumberConteiner.innerHTML = "SIGMA";
-            setTimeout(function(){
-              countNumberConteiner.style.display="none";
-            },600);
-          },600);
-        },600);
-      },600);
-    },600);
-    document.getElementById("hiddenOnMobile").style.display = "block";
-    document.getElementById("startContainer").style.display = "none";
-    document.getElementById("ad").style.display = "none";
-    getscore();
-    setInterval(() => {
-      objectDraw();
-      console.log(i+"i")
-      i-=100;
-      if(i<2500)
-      {
-        setTimeout(function(){
-            objectDraw();
-        },500);
-      }
-      if(i<2000)
-      {
-        objectDraw();
-        setTimeout(function(){
-            objectDraw();
-        },500);
-      }
-      if(i<1000)
-      {
-        setTimeout(function(){
-            objectDraw();
-        },500);
-      }
-      if(i<500)
-      {
-        objectDraw();
-        setTimeout(function(){
-          objectDraw();
-          setTimeout(function(){
-              objectDraw();
-              },500);
-          },500);
-      }
-      if(i<-500)
-        {
-          setTimeout(function(){
-            objectDraw();
-            setTimeout(function(){
-              objectDraw();
-              },500);
-          },1000);
-        }
-    }, 3000)};
-  var body = document.querySelector("body");
-  var lifeNumber = 12;
-  var score2 = document.getElementById("scoreContainer2");
-  var score = document.getElementById("scoreContainer");
-  var points = 0;
-  var topG =  document.getElementById("topG");
-  var andrzejtata = document.getElementById("userHero_AndrzejTata");
-  var leftArrow = document.getElementById("leftArrow");
-  var rightArrow = document.getElementById("rightArrow");
-  let gameWindow = document.getElementById("gameWindow");
-  var pozycjaTransform = 0;
-  var windowWidth = window.innerWidth;
-  var windowHeight = window.innerHeight;
-
-  window.addEventListener("resize",function() {
-      windowWidth = window.innerWidth
-      windowHeight = window.innerHeight;});
-
-  if(windowWidth < 1700)
-      windowWidth -= 100;
-
-  var gameScreenWitdh = ((windowWidth/100)*60);
-  var gameScreenHeight = ((windowWidth/100)*95);
-  console.log(gameScreenHeight);
-
-  leftArrow.addEventListener('click', function() {
-    moveToLeft();
-  });
-  rightArrow.addEventListener('click', function() {
-    moveToRight();
-  });
+ // ad
+document.getElementById("adIMG").addEventListener("click", function() {
+  window.open('https://andrzejtata.pl/casino', '_blank');
+});
+document.getElementById("adCloseBtn").addEventListener("click", function() {
+  document.getElementById("ad").style.display = "none";
+});
 
 
-  window.addEventListener('keydown', function(event) {
-    rightArrow.style.opacity = "100%";
-    leftArrow.style.opacity = "100%";
-    if(boolean3 == true)
-    {
-      switch (event.keyCode) {
-        case 65:
-        case 37:  
-          console.log("lewy");
-          leftArrow.style.filter = "invert(80%)";
-          moveToLeft();
-          window.addEventListener('keyup', function(event) {
-            if(event.keyCode == 65 || event.keyCode == 37)
-            {
-              leftArrow.style.filter = "invert(0%)";
-            }
-          });
+let speed;
+let i = 3000;
+const audio = new Audio('Tourner-Dans-Le-Vide-PHONK-REMIX-_Andrew-Tate-Theme-Song_.mp3');
+audio.play();
+let isMovingLeft = false;
+let isMovingRight = false;
+let pozycjaTransform = 0;
+let points = 0;
+let lifeNumber = 0;
+let gameRunning = true;
 
-        break;
+const body = document.querySelector("body");
+const score2 = document.getElementById("scoreContainer2");
+const score = document.getElementById("scoreContainer");
+const topG = document.getElementById("topG");
+const andrzejtata = document.getElementById("userHero_AndrzejTata");
+const leftArrow = document.getElementById("leftArrow");
+const rightArrow = document.getElementById("rightArrow");
+const gameWindow = document.getElementById("gameWindow");
 
-        case 68:
-        case 39:
-        console.log("prawy");
-        rightArrow.style.filter = "invert(80%)";
-        moveToRight();
-        window.addEventListener('keyup', function(event) {
-            if(event.keyCode == 68 || event.keyCode == 39)
-            {
-              rightArrow.style.filter = "invert(0%)";
-            }
-          });
-        break;
-      }
-  }
-  }, false);
+let windowWidth = window.innerWidth;
+let windowHeight = window.innerHeight;
 
-  let isMovingLeft = false;
-  let isMovingRight = false;
+window.addEventListener("resize", function() {
+  windowWidth = window.innerWidth;
+  windowHeight = window.innerHeight;
+});
 
-  function moveToLeft() {
-    if (!isMovingRight) {
-        isMovingLeft = true;
-        if (pozycjaTransform >= -((gameScreenWitdh / 2)+50)) {
-            pozycjaTransform -= 25;
-            andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
-        } else {
-            leftArrow.style.opacity = "0%";
-        }
-    }
-  }
+if (windowWidth < 1700) windowWidth -= 100;
 
-  function moveToRight() {
-    if (!isMovingLeft) {
-        isMovingRight = true;
-        if (pozycjaTransform <= ((gameScreenWitdh / 2)+50)) {
-            pozycjaTransform += 25;
-            andrzejtata.style.transform = "translateX(" + pozycjaTransform + "px)";
-        } else {
-            rightArrow.style.opacity = "0%";
-        }
-    }
-  }
+const gameScreenWitdh = (windowWidth / 100) * 60;
+const gameScreenHeight = (windowWidth / 100) * 95;
 
-  window.addEventListener('keyup', function(event) {
-    rightArrow.style.opacity = "100%";
-    leftArrow.style.opacity = "100%";
+leftArrow.addEventListener('click', moveToLeft);
+rightArrow.addEventListener('click', moveToRight);
+
+window.addEventListener('keydown', function(event) {
+  rightArrow.style.opacity = "100%";
+  leftArrow.style.opacity = "100%";
+  if (gameRunning) {
     switch (event.keyCode) {
       case 65:
-      case 37:  
-      isMovingLeft = false;
-
-      break;
-
+      case 37:
+        leftArrow.style.filter = "invert(80%)";
+        moveToLeft();
+        break;
       case 68:
       case 39:
-      isMovingRight = false;
-      break;
-
-      
+        rightArrow.style.filter = "invert(80%)";
+        moveToRight();
+        break;
     }
-  }, false);
-  
-  function objectDraw(){
-    const tab = ["kaska.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png"];
-    let randomNumberToGetElementFromTab = Math.floor(Math.random() * tab.length);
-    let randomPositionX = Math.floor(Math.random() * (gameScreenWitdh + (gameScreenWitdh/9)));
-    let objectImgSrc = tab[randomNumberToGetElementFromTab];
-    let object = document.createElement('img');
-    object.src = objectImgSrc;
-    object.className = "randomObjects";
-    object.style.left = randomPositionX+"px";
-    gameWindow.appendChild(object);
-    console.log(randomPositionX);
-
-    let startY = -windowHeight/8; 
-    let tymczasowa;
-    let tymczasowystring;
-
-    function animate() {
-        tymczasowystring = startY + "px";
-        tymczasowa = startY;
-        startY += speed; 
-        object.style.top = startY + "px";    
-        if(tymczasowa!=startY )
-        {
-          objectCatch();
-        }
-
-        if (startY < windowHeight) {
-            requestAnimationFrame(animate); 
-            objectCatch();
-        } else {
-              object.parentNode.removeChild(object);
-        }
-    }
-
-    animate();
-    function objectCatch(){
-      const objectRect = object.getBoundingClientRect();
-      const andrzejtataRect = topG.getBoundingClientRect();
-      let boolean = false;
-      if(boolean == false)
-        {
-      if (
-          objectRect.right >= (andrzejtataRect.left+ 80) &&
-          objectRect.left <= (andrzejtataRect.right- 80) &&
-          objectRect.bottom >= (andrzejtataRect.top + 10) &&
-          objectRect.top <= (andrzejtataRect.bottom - 10)
-      ) {
-        object.style.opacity = "0.7";
-        console.log(object.src);
-        
-        if(randomNumberToGetElementFromTab != 1 && randomNumberToGetElementFromTab != 2 && randomNumberToGetElementFromTab != 4)
-        {
-          console.log(object.src);
-          object.src = "get_point.png";
-
-          points += 125;
-          score.style.color = "lightgreen";
-          getscore();
-          topG.src = "szczesliwyandrzej.png";
-          
-        }
-          else{
-          object.src = "loss-point.png";
-          lifeNumber -= 100;
-          console.log(lifeNumber);
-          points -= 150;
-          getscore();
-          topG.src = "smutnyandrzej.png";
-          if(lifeNumber<0)
-          {
-            setTimeout(function(){
-              gameWindow.style.display="none"
-            },1000)
-            document.getElementById("endGameContainer").style.display = "block"
-            boolean3 = false;
-            body.parentNode.removeChild(gameWindow);
-            audio.pause();
-          }
-
-        }
-        setTimeout(function(){
-            topG.src = "topG.png"
-            score.style.color = "white";
-          },500)
-        
-      }
-        boolean=true;
-      }
-      }
   }
-  function getscore(){
-    let displayPoints;
-    if (points >= 0) {
-    displayPoints = "0000" + points;
+});
+
+window.addEventListener('keyup', function(event) {
+  rightArrow.style.opacity = "100%";
+  leftArrow.style.opacity = "100%";
+  if (event.keyCode === 65 || event.keyCode === 37) {
+    isMovingLeft = false;
+    leftArrow.style.filter = "invert(0%)";
+  } else if (event.keyCode === 68 || event.keyCode === 39) {
+    isMovingRight = false;
+    rightArrow.style.filter = "invert(0%)";
+  }
+});
+
+function moveToLeft() {
+  if (!isMovingRight) {
+    isMovingLeft = true;
+    if (pozycjaTransform >= -((gameScreenWitdh / 2) + 50)) {
+      pozycjaTransform -= 25;
+      andrzejtata.style.transform = `translateX(${pozycjaTransform}px)`;
     } else {
-        displayPoints = "-000" + Math.abs(points);
+      leftArrow.style.opacity = "0%";
     }
-    score2.innerHTML = displayPoints;
-    score.innerHTML = displayPoints;
   }
+}
+
+function moveToRight() {
+  if (!isMovingLeft) {
+    isMovingRight = true;
+    if (pozycjaTransform <= ((gameScreenWitdh / 2) + 50)) {
+      pozycjaTransform += 25;
+      andrzejtata.style.transform = `translateX(${pozycjaTransform}px)`;
+    } else {
+      rightArrow.style.opacity = "0%";
+    }
+  }
+}
+function gameStart() {
+  speed = 4;
+  setTimeout(function() {
+    drawObject();
+  }, 0);
+
+  const countNumberConteiner = document.getElementById("countNumberConteiner");
+  setTimeout(function() {
+    countNumberConteiner.innerHTML = "3";
+    setTimeout(function() {
+      countNumberConteiner.innerHTML = "2";
+      setTimeout(function() {
+        countNumberConteiner.innerHTML = "1";
+        setTimeout(function() {
+          countNumberConteiner.innerHTML = "SIGMA";
+          setTimeout(function() {
+            countNumberConteiner.style.display = "none";
+          }, 600);
+        }, 600);
+      }, 600);
+    }, 600);
+  }, 600);
+
+  document.getElementById("hiddenOnMobile").style.display = "block";
+  document.getElementById("startContainer").style.display = "none";
+  document.getElementById("ad").style.display = "none";
+  updateScore();
+
+  setInterval(() => {
+    drawObject();
+    i -= 100;
+    if (i < 2500) {
+      setTimeout(drawObject, 500);
+    }
+    if (i < 2000) {
+      drawObject();
+      setTimeout(drawObject, 500);
+    }
+    if (i < 1000) {
+      setTimeout(drawObject, 500);
+    }
+    if (i < 500) {
+      drawObject();
+      setTimeout(() => {
+        drawObject();
+        setTimeout(drawObject, 500);
+      }, 500);
+    }
+    if (i < -500) {
+      setTimeout(() => {
+        drawObject();
+        setTimeout(() => {
+          drawObject();
+          drawExtraObject();
+        }, 500);
+      }, 1000);
+    }
+  }, 3000);
+}
+
+function drawObject() {
+  const objects = ["kaska.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png"];
+  createObject(objects);
+}
+
+function drawExtraObject() {
+  const extraObjects = ["jetpack.png", "shield.png"];
+  createObject(extraObjects);
+}
+
+function createObject(images) {
+  const randomImage = images[Math.floor(Math.random() * images.length)];
+  const randomX = Math.floor(Math.random() * (gameScreenWitdh + gameScreenWitdh / 9));
+  const object = document.createElement('img');
+  object.src = randomImage;
+  object.className = "randomObjects";
+  object.style.left = `${randomX}px`;
+  gameWindow.appendChild(object);
+
+  animateObject(object);
+}
+
+function animateObject(object) {
+  let startY = -windowHeight / 8;
+  function animate() {
+    startY += speed;
+    object.style.top = `${startY}px`;
+    checkCollision(object);
+    if (startY < windowHeight) {
+      requestAnimationFrame(animate);
+    } else {
+      object.remove();
+    }
+  }
+  animate();
+}
+
+function checkCollision(object) {
+  const objectRect = object.getBoundingClientRect();
+  const playerRect = topG.getBoundingClientRect();
+
+  if (
+    objectRect.right >= (playerRect.left + 80) &&
+    objectRect.left <= (playerRect.right - 80) &&
+    objectRect.bottom >= (playerRect.top + 10) &&
+    objectRect.top <= (playerRect.bottom - 10)
+  ) {
+    handleCollision(object);
+  }
+}
+
+function handleCollision(object) {
+  let shieldstatus = false;
+  object.style.opacity = "0.7";
+  const src = object.src.split('/').pop();
+
+  if (src === "kaska.png" || src === "kobiety_sigm.png" && shieldstatus == false) {
+    object.src = "get_point.png";
+    points += 125;
+    score.style.color = "lightgreen";
+    topG.src = "szczesliwyandrzej.png";
+  } else {
+    object.src = "loss-point.png";
+    lifeNumber -= 100;
+    points -= 150;
+    topG.src = "smutnyandrzej.png";
+    if (lifeNumber < 0) {
+      endGame();
+    }
+  }
+  updateScore();
+  setTimeout(() => {
+    topG.src = "topG.png";
+    score.style.color = "white";
+  }, 500);
+}
+
+function updateScore() {
+  const displayPoints = points >= 0 ? `0000${points}` : `-000${Math.abs(points)}`;
+  score2.innerHTML = displayPoints;
+  score.innerHTML = displayPoints;
+}
+
+function endGame() {
+  gameRunning = false;
+  setTimeout(() => {
+    gameWindow.style.display = "none";
+  }, 1000);
+  document.getElementById("endGameContainer").style.display = "block";
+  body.removeChild(gameWindow);
+  audio.pause();
+}
 </script>
 </body>
 </html>

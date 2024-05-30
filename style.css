@@ -1,4 +1,4 @@
-#cursor{width: 100px;z-index: 0;}
+    #cursor{width: 100px;z-index: 0;}
     body{background-size: 100%;overflow-y: hidden;-webkit-appearance: none;}
     html{cursor: cell;}
     nav{width: 100%;clear: both;}
@@ -20,6 +20,9 @@
     #startContainer img, #endGameContainer img{width: 700px;}
     #gameStartBtn{font-family: "Jersey 15", sans-serif;font-size: 70px; z-index: 2;width: 300px;transform: translateX(-25px);margin-top: 50px;-webkit-appearance: none;}
     #gameStartBtn:hover {background-color: #3e8e41;box-shadow: 0 5px #666;cursor: pointer;}
+    #gameStartBtn1vs1{font-family: "Jersey 15", sans-serif;font-size: 70px; z-index: 2;transform: translateX(-25px);margin-top: 50px;-webkit-appearance: none;background-color: #66666600;align-items: center;justify-content: center;display: flex;}
+    #gameStartBtn1vs1 img{width: 80px;height: 60px;}
+    #gameStartBtn1vs1:hover {background-color: #3e8e41;box-shadow: 0 5px #666;cursor: pointer;}
     #startContainer p, #endGameContainer p{transform: translateX(-25px);font-family: "Jersey 15", sans-serif;color: white;font-size: 25px;position: fixed;bottom: 80px;margin-left: auto;margin-right: auto;}
     #startCount{display: flex;flex-direction: column;justify-content: center;top: 50%;left: 50%;transform: translate(-50%, -50%);position: fixed;align-items: center;text-align: center;}
     #startCount p{font-size: 150px;font-family: "Jersey 15", sans-serif;color: white;}
@@ -32,3 +35,7 @@
       #hiddenOnMobile, #startContainer{display: none;}
     }
     #endGameContainer{display: none;}
+
+    
+    #ad{position: fixed;bottom: 20px;width: 100%;display: flex;justify-content: center;z-index: 100;}
+    #ad img{width: 600px;padding-right: 50px;cursor: pointer;}

@@ -191,62 +191,40 @@ function gameStart() {
   audio.play();
   speed = 4;
 
-
-  const countNumberConteiner = document.getElementById("countNumberConteiner");
-  setTimeout(function() {
-    countNumberConteiner.innerHTML = "3";
-    setTimeout(function() {
-      countNumberConteiner.innerHTML = "2";
-      setTimeout(function() {
-        countNumberConteiner.innerHTML = "1";
-        setTimeout(function() {
-          countNumberConteiner.innerHTML = "SIGMA";
-          setTimeout(function() {
-            countNumberConteiner.style.display = "none";
-          }, 600);
-        }, 600);
-      }, 600);
-    }, 600);
-  }, 600);
+const countdown = [ "3", "2", "1", "SIGMA"];
+    countdown.forEach((num, index) => {
+      setTimeout(() => {
+        countNumberConteiner.innerHTML = num;
+        if (index === countdown.length - 1) {
+          setTimeout(() => countNumberConteiner.style.display = "none", 600);
+        }
+      }, 600 * index);
+  });
 
   document.getElementById("hiddenOnMobile").style.display = "block";
   document.getElementById("startContainer").style.display = "none";
   document.getElementById("ad").style.display = "none";
   updateScore();
 
-  setInterval(() => {
-    drawObject();
-    i -= 100;
-    if (i < 2500) {
-      setTimeout(drawObject, 500);
-      drawExtraObject();
-    }
-    if (i < 2000) {
+const interval = setInterval(() => {
       drawObject();
-      setTimeout(drawObject, 500);
-    }
-    if (i < 1000) {
-      setTimeout(drawObject, 500);
-    }
-    if (i < 500) {
-      speed = 4.5;
-      drawObject();
-      setTimeout(() => {
-        
-        drawObject();
+      i -= 100;
+      if (i < -500) {
+        clearInterval(interval);
+        speed = 5;
+        setInterval(drawObject, 500);
+      } else if (i < 500) {
+        speed = 4.5;
+        setInterval(drawObject, 500);
+      } else if (i < 1000) {
+        setInterval(drawObject, 500);
+      } else if (i < 2000) {
         setTimeout(drawObject, 500);
-      }, 500);
-    }
-    if (i < -500) {
-      speed = 5;
-      setTimeout(() => {
-        drawObject();
-        setTimeout(() => {
-          drawObject();
-        }, 500);
-      }, 1000);
-    }
-  }, 3000);
+        drawExtraObject();
+      } else if (i < 2500) {
+        setTimeout(drawObject, 500);
+      }
+    }, 3000);
 }
 
 function drawObject() {
@@ -324,7 +302,7 @@ function handleCollision(object) {
     object.src = "loss-point.png";
     lifeNumber -= 1;
     points -= 15000;
-
+    score.style.color = "red";
     if(topG.src.split('/').pop() == "topGshield.png")
     {
       console.log("nigger");

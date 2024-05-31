@@ -107,6 +107,7 @@ let pozycjaTransform = 0;
 let points = 0;
 let lifeNumber = 0;
 let gameRunning = true;
+let topGspeed = 25;
 
 const body = document.querySelector("body");
 const score2 = document.getElementById("scoreContainer2");
@@ -168,7 +169,7 @@ function moveToLeft() {
   if (!isMovingRight) {
     isMovingLeft = true;
     if (pozycjaTransform >= -((gameScreenWitdh / 2) + 50)) {
-      pozycjaTransform -= 25;
+      pozycjaTransform -= topGspeed;
       andrzejtata.style.transform = `translateX(${pozycjaTransform}px)`;
     } else {
       leftArrow.style.opacity = "0%";
@@ -180,7 +181,7 @@ function moveToRight() {
   if (!isMovingLeft) {
     isMovingRight = true;
     if (pozycjaTransform <= ((gameScreenWitdh / 2) + 50)) {
-      pozycjaTransform += 25;
+      pozycjaTransform += topGspeed;
       andrzejtata.style.transform = `translateX(${pozycjaTransform}px)`;
     } else {
       rightArrow.style.opacity = "0%";
@@ -215,12 +216,13 @@ const interval = setInterval(() => {
         setInterval(drawObject, 900);
       } else if (i < 500) {
         speed = 4.5;
-        drawObject();
+        topGspeed = 28;
         setInterval(drawObject, 800);
       } else if (i < 1000) {
+        topGspeed = 27;
         setInterval(drawObject, 700);
       } else if (i < 2000) {
-        drawObject();
+        topGspeed = 26;
         setTimeout(drawObject, 600);
         drawExtraObject();
       } else if (i < 2500) {

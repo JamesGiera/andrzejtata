@@ -210,19 +210,19 @@ const countdown = [ "3", "2", "1", "SIGMA"];
 const interval = setInterval(() => {
       drawObject();
       i -= 100;
-      if (i < -500) {
+      if (i < -3000) {
         clearInterval(interval);
         speed = 5;
         setInterval(drawObject, 900);
-      } else if (i < 500) {
+      } else if (i < -1000) {
         speed = 4.5;
-        topGspeed = 28;
+        topGspeed = 34;
         setInterval(drawObject, 800);
       } else if (i < 1000) {
-        topGspeed = 27;
+        topGspeed = 32;
         setInterval(drawObject, 700);
       } else if (i < 2000) {
-        topGspeed = 26;
+        topGspeed = 30;
         setTimeout(drawObject, 600);
         drawExtraObject();
       } else if (i < 2500) {

@@ -300,7 +300,7 @@ function handleCollision(object) {
 
   if (src === "kaska.png" || src === "kobiety_sigm.png") {
     object.src = "get_point.png";
-    points += 1250;
+    points += 1277;
     score.style.color = "lightgreen";
     if(topG.src.split('/').pop() != "topGshield.png")
     {
@@ -335,7 +335,7 @@ function handleCollision(object) {
 
     if(lifeNumber == 0)
     {
-      topG.src = "topG.png";
+       backToDeafultHero();
     }
   }
   updateScore();

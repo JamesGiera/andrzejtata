@@ -99,7 +99,8 @@ document.getElementById("adCloseBtn").addEventListener("click", function() {
 
 let speed;
 let i = 3000;
-const audio = new Audio('Tourner-Dans-Le-Vide-_Hardstyle_.mp3');
+const audio = new Audio('Tourner-Dans-Le-Vide-PHONK-REMIX-_Andrew-Tate-Theme-Song_.mp3');
+
 let isMovingLeft = false;
 let isMovingRight = false;
 let pozycjaTransform = 0;
@@ -189,9 +190,7 @@ function moveToRight() {
 function gameStart() {
   audio.play();
   speed = 4;
-  setTimeout(function() {
-    drawObject();
-  }, 0);
+
 
   const countNumberConteiner = document.getElementById("countNumberConteiner");
   setTimeout(function() {
@@ -220,6 +219,7 @@ function gameStart() {
     i -= 100;
     if (i < 2500) {
       setTimeout(drawObject, 500);
+      drawExtraObject();
     }
     if (i < 2000) {
       drawObject();
@@ -229,18 +229,20 @@ function gameStart() {
       setTimeout(drawObject, 500);
     }
     if (i < 500) {
+      speed = 4.5;
       drawObject();
       setTimeout(() => {
+        
         drawObject();
         setTimeout(drawObject, 500);
       }, 500);
     }
     if (i < -500) {
+      speed = 5;
       setTimeout(() => {
         drawObject();
         setTimeout(() => {
           drawObject();
-          drawExtraObject();
         }, 500);
       }, 1000);
     }
@@ -253,7 +255,7 @@ function drawObject() {
 }
 
 function drawExtraObject() {
-  const extraObjects = ["jetpack.png", "shield.png"];
+  const extraObjects = ["shield.png", "matrix.png", "podatki_sa_dla_bet.png", "kobiety_sigm.png","kaska.png"];
   createObject(extraObjects);
 }
 
@@ -265,7 +267,8 @@ function createObject(images) {
   object.className = "randomObjects";
   object.style.left = `${randomX}px`;
   gameWindow.appendChild(object);
-
+  if(object.src.split('/').pop() == "shield.png")
+    object.style.width = "80px";
   animateObject(object);
 }
 
@@ -299,25 +302,54 @@ function checkCollision(object) {
 }
 
 function handleCollision(object) {
-  let shieldstatus = false;
+  console.log(topG.src.split('/').pop());
   object.style.opacity = "0.7";
-  const src = object.src;
+  const src = object.src.split('/').pop();
 
-  if (src === "kaska.png" || src === "kobiety_sigm.png" || src === "get_point.png" || src === "loss-point.png") {
+  if (src === "kaska.png" || src === "kobiety_sigm.png") {
     object.src = "get_point.png";
     points += 125;
     score.style.color = "lightgreen";
-    topG.src = "szczesliwyandrzej.png";
-  } else {
+    if(topG.src.split('/').pop() != "topGshield.png")
+    {
+      topG.src = "szczesliwyandrzej.png";
+      backToDeafultHero();
+    }
+    
+  } else if (src === "shield.png") {
+    topG.src = "topGshield.png";
+    object.src = "get_point.png";
+    lifeNumber = 2
+  } else if (src === "matrix.png" || src === "podatki_sa_dla_bet.png") {
     object.src = "loss-point.png";
-    lifeNumber -= 100;
-    points -= 150;
-    topG.src = "smutnyandrzej.png";
+    lifeNumber -= 1;
+    points -= 15000;
+
+    if(topG.src.split('/').pop() == "topGshield.png")
+    {
+      console.log("nigger");
+      topG.src = "koniecTarczyTopG.png";
+      backToDeafultHero();
+    }
+
+    if(topG.src.split('/').pop() != "topGshield.png" && topG.src.split('/').pop() != "koniecTarczyTopG.png")
+    {
+      topG.src = "smutnyandrzej.png";
+      backToDeafultHero();
+    }
     if (lifeNumber < 0) {
       endGame();
+    } 
+
+    if(lifeNumber == 0)
+    {
+      topG.src = "topG.png";
     }
   }
   updateScore();
+}
+
+function backToDeafultHero(){
   setTimeout(() => {
     topG.src = "topG.png";
     score.style.color = "white";

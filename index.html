@@ -100,7 +100,7 @@ document.getElementById("adCloseBtn").addEventListener("click", function() {
 let speed;
 let i = 3000;
 const audio = new Audio('Tourner-Dans-Le-Vide-_Hardstyle_.mp3');
-audio.loop();
+
 
 let isMovingLeft = false;
 let isMovingRight = false;
@@ -191,6 +191,7 @@ function moveToRight() {
 }
 function gameStart() {
   audio.play();
+  audio.loop();
   speed = 4;
 
 const countdown = [ "3", "2", "1", "SIGMA"];

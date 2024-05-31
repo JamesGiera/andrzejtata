@@ -212,14 +212,16 @@ const interval = setInterval(() => {
       if (i < -500) {
         clearInterval(interval);
         speed = 5;
-        setInterval(drawObject, 500);
+        setInterval(drawObject, 900);
       } else if (i < 500) {
         speed = 4.5;
-        setInterval(drawObject, 500);
+        drawObject();
+        setInterval(drawObject, 800);
       } else if (i < 1000) {
-        setInterval(drawObject, 500);
+        setInterval(drawObject, 700);
       } else if (i < 2000) {
-        setTimeout(drawObject, 500);
+        drawObject();
+        setTimeout(drawObject, 600);
         drawExtraObject();
       } else if (i < 2500) {
         setTimeout(drawObject, 500);

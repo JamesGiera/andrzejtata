@@ -303,7 +303,7 @@ function handleCollision(object) {
   object.style.opacity = "0.7";
   const src = object.src;
 
-  if (src === "kaska.png" || src === "kobiety_sigm.png" && shieldstatus == false) {
+  if (src === "kaska.png" || src === "kobiety_sigm.png" || src === "get_point.png" || src === "loss-point.png") {
     object.src = "get_point.png";
     points += 125;
     score.style.color = "lightgreen";

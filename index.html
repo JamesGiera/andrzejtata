@@ -299,34 +299,37 @@ function handleCollision(object) {
   const src = object.src.split('/').pop();
 
   if (src === "kaska.png" || src === "kobiety_sigm.png") {
-    object.src = "get_point.png";
-    points += 1277;
+    object.src = "img/get_point.png";
+    points += 1250;
     score.style.color = "lightgreen";
     if(topG.src.split('/').pop() != "topGshield.png")
     {
-      topG.src = "szczesliwyandrzej.png";
+      topG.src = "img/szczesliwyandrzej.png";
       backToDeafultHero();
     }
+    setTimeout(() => {
+    score.style.color = "white";
+  }, 500);
     
   } else if (src === "shield.png") {
-    topG.src = "topGshield.png";
-    object.src = "get_point.png";
+    topG.src = "img/topGshield.png";
+    object.src = "img/get_point.png";
     lifeNumber = 1;
   } else if (src === "matrix.png" || src === "podatki_sa_dla_bet.png") {
-    object.src = "loss-point.png";
+    object.src = "img/loss-point.png";
     lifeNumber -= 1;
     points -= 15000;
     score.style.color = "red";
     if(topG.src.split('/').pop() == "topGshield.png")
     {
       console.log("nigger");
-      topG.src = "koniecTarczyTopG.png";
+      topG.src = "img/koniecTarczyTopG.png";
       backToDeafultHero();
     }
 
     if(topG.src.split('/').pop() != "topGshield.png" && topG.src.split('/').pop() != "koniecTarczyTopG.png")
     {
-      topG.src = "smutnyandrzej.png";
+      topG.src = "img/smutnyandrzej.png";
       backToDeafultHero();
     }
     if (lifeNumber < 0) {
@@ -335,7 +338,7 @@ function handleCollision(object) {
 
     if(lifeNumber == 0)
     {
-       backToDeafultHero();
+      backToDeafultHero();
     }
   }
   updateScore();

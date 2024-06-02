@@ -195,6 +195,10 @@ function moveToRight() {
 function gameStart() {
   audio.play();
   speed = 4;
+  setInterval(function(){
+    points += 1;
+    updateScore();
+  },400)
 
 const countdown = [ "3", "2", "1", "SIGMA"];
     countdown.forEach((num, index) => {

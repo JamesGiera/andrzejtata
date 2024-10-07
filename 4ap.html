@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>niger</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#login-container input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#login-container button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login-container button:hover {
+    background-color: #218838;
+}
+
+#error-msg {
+    color: red;
+    margin-top: 10px;
+}
+
+#content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Proszę podać hasło, aby uzyskać dostęp do strony</h2>
+        <input type="password" id="password" placeholder="Wpisz hasło">
+        <button onclick="checkPassword()">Zaloguj</button>
+        <p id="error-msg"></p>
+    </div>
+
+    <div id="content" style="display: none;">
+        <h1>3 ziko na dzien nauczyciela i koniec roku es</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paweł</td>
+                    <td>G</td>
+                </tr>
+                <tr>
+                    <td>Bartosz</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>Sławomir</td>
+                    <td>G</td>
+                </tr>
+                <tr>
+                    <td>Karol</td>
+                    <td>G</td>
+                </tr>
+                <tr>
+                    <td>Kacper</td>
+                    <td>O</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script >
+        const correctPassword = "niger"; 
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (passwordInput === correctPassword) {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                errorMsg.textContent = "Nieprawidłowe hasło. Spróbuj ponownie.";
+            }
+        }
+
+    </script>
+</body>
+</html>

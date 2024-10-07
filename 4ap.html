@@ -75,13 +75,6 @@ th, td {
     </style>
 </head>
 <body>
-    <div id="login-container">
-        <h2>Proszę podać hasło, aby uzyskać dostęp do strony</h2>
-        <input type="password" id="password" placeholder="Wpisz hasło">
-        <button onclick="checkPassword()">Zaloguj</button>
-        <p id="error-msg"></p>
-    </div>
-
     <div id="content" style="display: none;">
         <h1>5 ziko na dzien nauczyciela i koniec roku es</h1>
         <table>
@@ -141,22 +134,5 @@ th, td {
             </tbody>
         </table>
     </div>
-
-    <script >
-        const correctPassword = "niger"; 
-
-        function checkPassword() {
-            const passwordInput = document.getElementById('password').value;
-            const errorMsg = document.getElementById('error-msg');
-            
-            if (passwordInput === correctPassword) {
-                document.getElementById('login-container').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            } else {
-                errorMsg.textContent = "Nieprawidłowe hasło. Spróbuj ponownie.";
-            }
-        }
-
-    </script>
 </body>
 </html>
